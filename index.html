@@ -29,23 +29,13 @@
     ::-webkit-scrollbar-track{background:var(--dark);}
     ::-webkit-scrollbar-thumb{background:var(--gold);}
 
-    @keyframes shimmer{0%{left:-120%}100%{left:120%}}
+    @keyframes moneyPulse{0%,100%{transform:scale(1) rotate(0deg);filter:drop-shadow(0 0 6px rgba(200,144,42,.4));}25%{transform:scale(1.35) rotate(-12deg);filter:drop-shadow(0 0 18px rgba(232,192,96,.9));}50%{transform:scale(1.4) rotate(8deg);filter:drop-shadow(0 0 22px rgba(253,240,176,1));}75%{transform:scale(1.3) rotate(-6deg);filter:drop-shadow(0 0 14px rgba(232,192,96,.8));}}
+    .money-egg{display:inline-block;margin-left:.2em;font-size:.85em;background:var(--gold-metal);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:default;vertical-align:baseline;line-height:1;position:relative;top:.05em;}
+
+
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* BUTTONS */
-    .btn-gold{
-      position:relative;overflow:hidden;
-      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-      height:52px;padding:0 2rem;background:var(--gold-metal);color:#1c1000;
-      font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;
-      text-transform:uppercase;letter-spacing:.13em;text-decoration:none;
-      border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;
-      clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
-    }
-    .btn-gold::after{content:'';position:absolute;top:-20%;left:-120%;width:60%;height:140%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,220,.55) 50%,transparent 80%);transform:skewX(-20deg);animation:shimmer 8s ease-in-out infinite;}
-    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,144,42,.4);}
-    .btn-gold:active{transform:translateY(0);box-shadow:none;}
     .btn-outline{
       display:inline-flex;align-items:center;gap:.5rem;height:52px;padding:0 1.8rem;
       background:transparent;border:1.5px solid var(--gold);color:rgba(255,255,255,.8);
@@ -60,6 +50,8 @@
     nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(15,14,12,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--gold-border);transition:background .3s,box-shadow .3s;}
     nav.scrolled{background:rgba(15,14,12,.99);box-shadow:0 2px 24px rgba(0,0,0,.5);}
     .logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;}
+    .logo-svg{width:42px;height:42px;flex-shrink:0;transition:filter .3s,transform .3s;}
+    .logo:hover .logo-svg{filter:drop-shadow(0 0 8px rgba(232,192,96,.8));transform:rotate(5deg) scale(1.08);}
     .logo-mark{width:36px;height:36px;flex-shrink:0;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;color:var(--gold);transition:background .2s,color .2s;}
     .logo:hover .logo-mark{background:var(--gold);color:#fff;}
     .logo-text{font-size:.74rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.17em;line-height:1.2;}
@@ -87,14 +79,19 @@
     }
 
     /* HERO */
-    #home{min-height:100vh;min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+    #home{min-height:82vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
     .hero-bg{position:absolute;inset:0;background-image:url('hero-bg.jpg');background-size:cover;background-position:center;}
     .hero-bg.no-image{background-image:none;background:linear-gradient(160deg,#201e18 0%,#0f0e0c 100%);}
     .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,7,5,.96) 0%,rgba(8,7,5,.58) 50%,rgba(8,7,5,.18) 100%);}
     .hero-grid{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(200,144,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,144,42,.04) 1px,transparent 1px);background-size:64px 64px;}
     .hero-content{position:relative;z-index:2;padding:calc(var(--nav-h) + clamp(3rem,6vw,5rem)) var(--pad) clamp(3rem,7vw,6rem);}
-    .hero-tag{display:inline-flex;align-items:center;gap:.6rem;color:var(--gold);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;margin-bottom:clamp(1rem,3vw,1.5rem);opacity:0;animation:fadeUp .7s .15s forwards;}
-    .hero-tag::before{content:'';width:24px;height:1px;background:var(--gold);flex-shrink:0;}
+    @keyframes glistenSweep{0%,100%{background-position:200% center;}50%{background-position:-200% center;}}
+    .hero-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;margin-bottom:clamp(1rem,3vw,1.5rem);opacity:0;background:linear-gradient(90deg,var(--g1) 0%,var(--g2) 15%,var(--g3) 30%,var(--g4) 45%,#fff9d6 50%,var(--g4) 55%,var(--g3) 70%,var(--g2) 85%,var(--g1) 100%);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp .7s .15s forwards,glistenSweep 12s ease-in-out infinite;animation-delay:.15s,1.5s;}
+    .btn-gold{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;height:52px;padding:0 2rem;background:linear-gradient(90deg,var(--g1) 0%,var(--g2) 15%,var(--g3) 30%,var(--g4) 45%,#fff9d6 50%,var(--g4) 55%,var(--g3) 70%,var(--g2) 85%,var(--g1) 100%);background-size:300% auto;color:#1c1000;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.13em;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));animation:glistenSweep 10s ease-in-out infinite;}
+    .btn-gold::after{content:'';position:absolute;top:-20%;left:-120%;width:60%;height:140%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,220,.55) 50%,transparent 80%);transform:skewX(-20deg);animation:shimmer 8s ease-in-out infinite;}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,144,42,.4);}
+    .btn-gold:active{transform:translateY(0);box-shadow:none;}
+    .hero-tag::before{content:'';width:24px;height:1px;background:var(--gold);flex-shrink:0;display:inline-block;}
     #home h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.9rem,11vw,5.8rem);font-weight:600;color:#fff;line-height:1.02;letter-spacing:-.01em;margin-bottom:clamp(.5rem,2vw,1rem);opacity:0;animation:fadeUp .8s .3s forwards;}
     #home h1 em{font-style:italic;color:var(--gold-light);}
     .hero-sub{font-size:clamp(1rem,3vw,1.35rem);color:rgba(255,255,255,.65);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:clamp(2rem,5vw,3rem);opacity:0;animation:fadeUp .7s .45s forwards;}
@@ -112,13 +109,13 @@
     .marquee-dot{font-size:.4rem;color:rgba(0,0,0,.35);}
 
     /* TRUST BAR */
-    .trust-bar{background:var(--dark);border-bottom:1px solid var(--gold-border);padding:clamp(2rem,5vw,3rem) var(--pad);}
+    .trust-bar{background:var(--dark);border-bottom:1px solid var(--gold-border);padding:.8rem var(--pad);}
     .trust-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
     .trust-inner::-webkit-scrollbar{display:none;}
-    .trust-item{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(1rem,2vw,1.5rem) clamp(1.5rem,4vw,3rem);border-right:1px solid var(--gold-border);}
+    .trust-item{flex:1 0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding:.7rem clamp(1rem,2vw,2rem);border-right:1px solid var(--gold-border);}
     .trust-item:last-child{border-right:none;}
-    .trust-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:.4rem;display:block;}
-    .trust-label{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.4);line-height:1.5;white-space:nowrap;}
+    .trust-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:.2rem;display:block;}
+    .trust-label{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.4);line-height:1.4;white-space:nowrap;}
 
     /* SHARED */
     .eyebrow{display:inline-flex;align-items:center;gap:.7rem;color:var(--gold);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;margin-bottom:.9rem;}
@@ -139,7 +136,12 @@
     /* SERVICES */
     #services{background:var(--dark);padding:clamp(4rem,10vw,7rem) var(--pad);}
     .svc-header{max-width:1100px;margin:0 auto;margin-bottom:clamp(2.5rem,5vw,4rem);display:flex;flex-direction:column;gap:.9rem;}
-    .svc-sub{color:var(--muted);font-size:.9rem;line-height:1.7;max-width:360px;}
+    .svc-right{display:flex;flex-direction:column;gap:1.2rem;max-width:360px;}
+    .svc-specialties{border-top:1px solid var(--gold-border);padding-top:1.2rem;}
+    .svc-spec-label{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);margin-bottom:.8rem;}
+    .svc-spec-list{display:flex;flex-wrap:wrap;gap:.5rem;}
+    .svc-spec-item{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.7);border:1px solid var(--gold-border);padding:.3rem .8rem;letter-spacing:.08em;transition:border-color .2s,color .2s;}
+    .svc-spec-item:hover{border-color:var(--gold);color:var(--gold-light);}
     @media(min-width:700px){.svc-header{flex-direction:row;align-items:flex-end;justify-content:space-between;}}
     .svc-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1px;background:var(--gold-border);}
     @media(min-width:560px){.svc-grid{grid-template-columns:1fr 1fr;}}
@@ -268,23 +270,34 @@
     <div class="hero-bg" id="heroBg" role="presentation"></div>
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-content">
-      <div class="hero-tag" aria-hidden="true">Custom Apparel</div>
-      <h1>High Quality.<br/><em>Low Cost.</em></h1>
+      <div class="hero-tag" aria-hidden="true">Custom Apparel Provider</div>
+      <h1>High Quality<br/><em>Low Cost</em><span class="money-egg" id="moneyEgg" aria-hidden="true">$</span></h1>
       <p class="hero-sub">Your design on fabric &#8212; done right, priced right, delivered fast.</p>
       <div class="hero-btns">
         <a href="tel:+17575810004" class="btn-gold">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          Call (757) 581-0004
+          Call for Free Quote
         </a>
         <a id="emailBtn" href="#" class="btn-gold">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
-          Email for a Quote
+          Email for Free Quote
         </a>
         <a href="#quote" class="btn-outline">Fill Out the Form</a>
       </div>
 
     </div>
   </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar" aria-label="Why choose us">
+    <div class="trust-inner">
+      <div class="trust-item reveal"><span class="trust-num">20</span><span class="trust-label">Years in Business</span></div>
+      <div class="trust-item reveal d1"><span class="trust-num">1000+</span><span class="trust-label">Items Delivered in 2026</span></div>
+      <div class="trust-item reveal d1"><span class="trust-num">100+</span><span class="trust-label">Businesses Served</span></div>
+      <div class="trust-item reveal d2"><span class="trust-num">Free</span><span class="trust-label">Design Help</span></div>
+      <div class="trust-item reveal d2"><span class="trust-num">Fast</span><span class="trust-label">Express Options Available</span></div>
+    </div>
+  </div>
 
   <!-- MARQUEE -->
   <div class="marquee-bar" aria-hidden="true">
@@ -298,7 +311,6 @@
       <span class="marquee-item">Free Design Help <span class="marquee-dot">&#9670;</span></span>
       <span class="marquee-item">Fast Turnaround <span class="marquee-dot">&#9670;</span></span>
       <span class="marquee-item">Express Options Available <span class="marquee-dot">&#9670;</span></span>
-      
       <span class="marquee-item">Custom Apparel <span class="marquee-dot">&#9670;</span></span>
       <span class="marquee-item">Outerwear <span class="marquee-dot">&#9670;</span></span>
       <span class="marquee-item">Business Wear <span class="marquee-dot">&#9670;</span></span>
@@ -308,17 +320,6 @@
       <span class="marquee-item">Free Design Help <span class="marquee-dot">&#9670;</span></span>
       <span class="marquee-item">Fast Turnaround <span class="marquee-dot">&#9670;</span></span>
       <span class="marquee-item">Express Options Available <span class="marquee-dot">&#9670;</span></span>
-    </div>
-  </div>
-
-  <!-- TRUST BAR -->
-  <div class="trust-bar" aria-label="Why choose us">
-    <div class="trust-inner">
-      <div class="trust-item reveal"><span class="trust-num">20</span><span class="trust-label">Years in Business</span></div>
-      <div class="trust-item reveal d1"><span class="trust-num">1000+</span><span class="trust-label">Items Delivered in 2026</span></div>
-      <div class="trust-item reveal d1"><span class="trust-num">100+</span><span class="trust-label">Businesses Served</span></div>
-      <div class="trust-item reveal d2"><span class="trust-num">Free</span><span class="trust-label">Design Help</span></div>
-      <div class="trust-item reveal d2"><span class="trust-num">Fast</span><span class="trust-label">Express Options Available</span></div>
     </div>
   </div>
 
@@ -336,8 +337,21 @@
       <div>
         <div class="eyebrow reveal">What We Print</div>
         <h2 class="section-h light reveal d1">Our <em>Products</em></h2>
+        <p class="svc-sub reveal d1">From jackets to laptop bags &#8212; if it can be worn or carried, we can put your brand on it.</p>
       </div>
-      <p class="svc-sub reveal d2">From jackets to laptop bags &#8212; if it can be worn or carried, we can put your brand on it.</p>
+      <div class="svc-right reveal d2">
+        <div class="svc-specialties">
+          <p class="svc-spec-label">We Specialize In</p>
+          <div class="svc-spec-list">
+            <span class="svc-spec-item">Embroidery</span>
+            <span class="svc-spec-item">Screen Printing</span>
+            <span class="svc-spec-item">Heat Transfers</span>
+            <span class="svc-spec-item">Direct-to-Garment</span>
+            <span class="svc-spec-item">Custom Patches</span>
+            <span class="svc-spec-item">& More</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="svc-grid">
       <div class="svc-card reveal">
@@ -509,6 +523,15 @@
   </footer>
 
   <script>
+    // Money easter egg — animates every 30 seconds
+    var egg = document.getElementById('moneyEgg');
+    function triggerEgg(){
+      egg.style.animation='none';
+      void egg.offsetWidth;
+      egg.style.animation='moneyPulse 1.4s ease-in-out 1';
+    }
+    setTimeout(function(){ triggerEgg(); setInterval(triggerEgg, 15000); }, 4000);
+
     var em = 'Qualitysilkscreens' + '@' + 'gmail.com';
     var sub = encodeURIComponent('Free Quote Request - Quality Silkscreens');
     var ml = 'mailto:' + em + '?subject=' + sub;
