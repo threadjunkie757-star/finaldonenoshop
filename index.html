@@ -3,835 +3,582 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quality Silkscreens — Custom Apparel, Screen Printing & Embroidery</title>
-  <meta name="description" content="Quality Silkscreens — local custom apparel shop. Screen printing, embroidery, heat transfer. Businesses, teams & events. Call (757) 581-0004."/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <title>Quality Silkscreens &mdash; Custom Apparel</title>
+  <meta name="description" content="Quality Silkscreens — premium custom apparel for businesses, teams, and events. 20 years experience, fast turnaround, free design help. Call (757) 581-0004."/>
+  <meta property="og:title" content="Quality Silkscreens — Custom Apparel"/>
+  <meta property="og:description" content="20 years delivering vibrant custom apparel. 1,000+ items delivered in 2026. Hundreds of businesses served. Fast quotes."/>
+  <meta property="og:type" content="website"/>
+  <link rel="canonical" href="https://qualitysilkscreens.com/"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
+    :root{
+      --g1:#6b4a0a;--g2:#b8832a;--g3:#e8c060;--g4:#fdf0b0;--g6:#8a5e14;
+      --gold-metal:linear-gradient(135deg,var(--g1) 0%,var(--g2) 25%,var(--g3) 45%,var(--g4) 55%,var(--g3) 65%,var(--g2) 78%,var(--g6) 100%);
+      --gold:#c8902a;--gold-light:#e8c060;
+      --gold-dim:rgba(200,144,42,0.12);--gold-border:rgba(200,144,42,0.25);
+      --dark:#0f0e0c;--dark2:#1a1814;--dark3:#242118;
+      --cream:#f6f2e9;--cream2:#ede8da;
+      --text:#2a2620;--muted:#7a7265;
+      --nav-h:64px;--pad:clamp(1.25rem,5vw,3rem);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;scrollbar-color:var(--gold) var(--dark);scrollbar-width:thin;}
+    body{font-family:'Syne',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden;}
+    img{max-width:100%;display:block;}
+    ::-webkit-scrollbar{width:3px;}
+    ::-webkit-scrollbar-track{background:var(--dark);}
+    ::-webkit-scrollbar-thumb{background:var(--gold);}
 
-    /* ── DESIGN TOKENS ── */
-    :root {
-      --black:   #0A0A0C;
-      --white:   #FAFAF8;
-      --stone:   #F0EDE7;
-      --border:  #DEDAD4;
-      --gray:    #6E6C66;
-      --gold:    #C4932A;
-      --gold-h:  #E8B84A;
-      --gold-d:  #8A6415;
-      --nav-h:   62px;
-    }
+    @keyframes shimmer{0%{left:-120%}100%{left:120%}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body {
-      font-family:'Manrope', sans-serif;
-      background:var(--white);
-      color:var(--black);
-      overflow-x:hidden;
-      -webkit-font-smoothing:antialiased;
+    /* BUTTONS */
+    .btn-gold{
+      position:relative;overflow:hidden;
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      height:52px;padding:0 2rem;background:var(--gold-metal);color:#1c1000;
+      font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:.13em;text-decoration:none;
+      border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;
+      clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
     }
+    .btn-gold::after{content:'';position:absolute;top:-20%;left:-120%;width:60%;height:140%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,220,.55) 50%,transparent 80%);transform:skewX(-20deg);animation:shimmer 8s ease-in-out infinite;}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,144,42,.4);}
+    .btn-gold:active{transform:translateY(0);box-shadow:none;}
+    .btn-outline{
+      display:inline-flex;align-items:center;gap:.5rem;height:52px;padding:0 1.8rem;
+      background:transparent;border:1.5px solid var(--gold);color:rgba(255,255,255,.8);
+      font-family:'Syne',sans-serif;font-size:.8rem;font-weight:600;
+      text-transform:uppercase;letter-spacing:.13em;text-decoration:none;
+      cursor:pointer;transition:background .2s,color .2s,transform .2s;
+      clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+    }
+    .btn-outline:hover{background:var(--gold-dim);color:#fff;transform:translateY(-2px);}
 
-    /* ━━ ANIMATIONS ━━ */
-    @keyframes shimmer {
-      0%   { left:-80%; }
-      100% { left:120%; }
-    }
-    @keyframes tick {
-      0%   { transform:translateX(0); }
-      100% { transform:translateX(-50%); }
-    }
-    @keyframes cue-bob {
-      0%,100% { transform:translateX(-50%) translateY(0); }
-      50%     { transform:translateX(-50%) translateY(8px); }
-    }
-
-    /* ━━ BUTTONS ━━ */
-    .btn-gold {
-      position:relative; overflow:hidden;
-      display:inline-flex; align-items:center; justify-content:center; gap:0.5rem;
-      background:linear-gradient(110deg, var(--gold-d), var(--gold), var(--gold-h), var(--gold));
-      color:#fff;
-      padding:1rem 2.4rem;
-      font-family:'Syne', sans-serif;
-      font-weight:700; font-size:0.8rem; letter-spacing:2px;
-      text-transform:uppercase;
-      text-decoration:none; border:none; cursor:pointer;
-      box-shadow:0 4px 24px rgba(196,147,42,0.4);
-      transition:transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-gold::after {
-      content:''; position:absolute; top:0; left:-80%;
-      width:50%; height:100%;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-      transform:skewX(-18deg);
-      animation:shimmer 2.8s ease-in-out infinite;
-    }
-    .btn-gold:hover { transform:translateY(-3px); box-shadow:0 10px 32px rgba(196,147,42,0.55); }
-
-    .btn-ghost {
-      position:relative; overflow:hidden;
-      display:inline-flex; align-items:center; justify-content:center; gap:0.5rem;
-      background:transparent; color:#fff;
-      padding:1rem 2.4rem;
-      font-family:'Syne', sans-serif;
-      font-weight:700; font-size:0.8rem; letter-spacing:2px;
-      text-transform:uppercase;
-      text-decoration:none; border:1.5px solid rgba(255,255,255,0.6); cursor:pointer;
-      transition:background 0.2s, border-color 0.2s, transform 0.2s;
-    }
-    .btn-ghost:hover { background:rgba(255,255,255,0.1); border-color:#fff; transform:translateY(-3px); }
-
-    /* ━━ NAV ━━ */
-    #mainNav {
-      position:fixed; top:0; left:0; right:0; z-index:999;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 2rem;
-      height:var(--nav-h);
-      background:#0A0A0C;
-      border-bottom:2px solid var(--gold);
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(15,14,12,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--gold-border);transition:background .3s,box-shadow .3s;}
+    nav.scrolled{background:rgba(15,14,12,.99);box-shadow:0 2px 24px rgba(0,0,0,.5);}
+    .logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;}
+    .logo-mark{width:36px;height:36px;flex-shrink:0;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;color:var(--gold);transition:background .2s,color .2s;}
+    .logo:hover .logo-mark{background:var(--gold);color:#fff;}
+    .logo-text{font-size:.74rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.17em;line-height:1.2;}
+    .nav-links{display:none;}
+    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;min-height:44px;}
+    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:1px;transition:transform .3s,opacity .3s;}
+    .hamburger[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+    .hamburger[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .mobile-menu{position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:rgba(15,14,12,.99);z-index:299;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translateY(-110%);transition:transform .4s cubic-bezier(.4,0,.2,1);pointer-events:none;}
+    .mobile-menu.open{transform:translateY(0);pointer-events:all;}
+    .mobile-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:clamp(1.4rem,5vw,2rem);font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:1.1rem 2rem;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s;}
+    .mobile-menu a:last-child{border-bottom:none;color:var(--gold);}
+    .mobile-menu a:hover{color:var(--gold);}
+    @media(min-width:860px){
+      .hamburger{display:none;}
+      .nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
+      .nav-links a{text-decoration:none;color:rgba(255,255,255,.62);font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.13em;position:relative;transition:color .2s;}
+      .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;}
+      .nav-links a:hover{color:#fff;}
+      .nav-links a:hover::after{transform:scaleX(1);}
+      .nav-links li:last-child a{color:var(--gold);border:1px solid var(--gold);padding:.4rem 1rem;}
+      .nav-links li:last-child a:hover{background:var(--gold);color:#fff;}
+      .nav-links li:last-child a::after{display:none;}
     }
 
-    .logo-wrap {
-      display:flex; align-items:center; gap:0.7rem;
-      text-decoration:none; flex-shrink:0;
-    }
-    .logo-wrap img { height:38px; width:auto; display:block; }
-    /* Bebas Neue — bold condensed wordmark, far more distinctive than Syne */
-    .logo-text {
-      font-family:'Bebas Neue', sans-serif;
-      font-size:1.6rem;
-      letter-spacing:3.5px;
-      color:var(--gold-h);
-      line-height:1;
-    }
+    /* HERO */
+    #home{min-height:100vh;min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background-image:url('hero-bg.jpg');background-size:cover;background-position:center;}
+    .hero-bg.no-image{background-image:none;background:linear-gradient(160deg,#201e18 0%,#0f0e0c 100%);}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,7,5,.96) 0%,rgba(8,7,5,.58) 50%,rgba(8,7,5,.18) 100%);}
+    .hero-grid{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(200,144,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,144,42,.04) 1px,transparent 1px);background-size:64px 64px;}
+    .hero-content{position:relative;z-index:2;padding:calc(var(--nav-h) + clamp(3rem,6vw,5rem)) var(--pad) clamp(3rem,7vw,6rem);}
+    .hero-tag{display:inline-flex;align-items:center;gap:.6rem;color:var(--gold);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;margin-bottom:clamp(1rem,3vw,1.5rem);opacity:0;animation:fadeUp .7s .15s forwards;}
+    .hero-tag::before{content:'';width:24px;height:1px;background:var(--gold);flex-shrink:0;}
+    #home h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.9rem,11vw,5.8rem);font-weight:600;color:#fff;line-height:1.02;letter-spacing:-.01em;margin-bottom:clamp(.5rem,2vw,1rem);opacity:0;animation:fadeUp .8s .3s forwards;}
+    #home h1 em{font-style:italic;color:var(--gold-light);}
+    .hero-sub{font-size:clamp(1rem,3vw,1.35rem);color:rgba(255,255,255,.65);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:clamp(2rem,5vw,3rem);opacity:0;animation:fadeUp .7s .45s forwards;}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;opacity:0;animation:fadeUp .7s .6s forwards;}
+    .hero-stats{display:flex;flex-wrap:wrap;gap:0;margin-top:clamp(2.5rem,6vw,4rem);border-top:1px solid rgba(200,144,42,.22);padding-top:clamp(1.2rem,3vw,2rem);opacity:0;animation:fadeUp .7s .75s forwards;}
+    .hero-stat{flex:0 0 auto;padding-right:clamp(1rem,3vw,2rem);margin-right:clamp(1rem,3vw,2rem);margin-bottom:.75rem;border-right:1px solid rgba(200,144,42,.22);}
+    .hero-stat:last-child{border-right:none;}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;color:var(--gold-light);line-height:1;display:block;}
+    .stat-lbl{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);margin-top:.25rem;display:block;}
 
-    .nav-links {
-      display:flex; align-items:center;
-      gap:0.1rem; list-style:none;
-    }
-    .nav-links li a {
-      display:flex; align-items:center;
-      font-family:'Manrope', sans-serif;
-      font-size:0.74rem; font-weight:600;
-      letter-spacing:1px; text-transform:uppercase;
-      text-decoration:none;
-      color:rgba(255,255,255,0.85);
-      padding:0.45rem 0.8rem;
-      transition:color 0.2s, background 0.2s;
-      white-space:nowrap;
-    }
-    .nav-links li a:hover {
-      color:#fff;
-      background:rgba(255,255,255,0.06);
-    }
+    /* MARQUEE */
+    .marquee-bar{background:var(--gold);overflow:hidden;padding:.7rem 0;white-space:nowrap;}
+    .marquee-track{display:inline-flex;animation:marquee 28s linear infinite;}
+    .marquee-item{display:inline-flex;align-items:center;gap:1.2rem;padding:0 1.6rem;font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:#1c1000;}
+    .marquee-dot{font-size:.4rem;color:rgba(0,0,0,.35);}
 
-    /* Free Quote — gold fill */
-    .nav-links li a.nav-cta {
-      background:linear-gradient(110deg, var(--gold-d), var(--gold), var(--gold-h));
-      color:#fff !important;
-      padding:0.45rem 1.15rem;
-      font-weight:700;
-      box-shadow:0 2px 12px rgba(196,147,42,0.35);
-      transition:transform 0.2s, box-shadow 0.2s;
-    }
-    .nav-links li a.nav-cta:hover {
-      transform:translateY(-2px);
-      box-shadow:0 6px 20px rgba(196,147,42,0.55);
-    }
+    /* TRUST BAR */
+    .trust-bar{background:var(--dark);border-bottom:1px solid var(--gold-border);padding:clamp(2rem,5vw,3rem) var(--pad);}
+    .trust-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+    .trust-inner::-webkit-scrollbar{display:none;}
+    .trust-item{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(1rem,2vw,1.5rem) clamp(1.5rem,4vw,3rem);border-right:1px solid var(--gold-border);}
+    .trust-item:last-child{border-right:none;}
+    .trust-num{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:.4rem;display:block;}
+    .trust-label{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.4);line-height:1.5;white-space:nowrap;}
 
-    /* Our Shop — gold outline */
-    .nav-links li a.nav-shop {
-      border:1.5px solid var(--gold);
-      color:var(--gold-h) !important;
-      background:transparent;
-      padding:0.42rem 0.9rem;
-      transition:background 0.2s, color 0.2s, transform 0.2s;
-    }
-    .nav-links li a.nav-shop:hover {
-      background:var(--gold);
-      color:#fff !important;
-      transform:translateY(-2px);
-    }
+    /* SHARED */
+    .eyebrow{display:inline-flex;align-items:center;gap:.7rem;color:var(--gold);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;margin-bottom:.9rem;}
+    .eyebrow::after{content:'';flex-shrink:0;width:30px;height:1px;background:var(--gold);}
+    .section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3.4rem);font-weight:600;line-height:1.08;}
+    .section-h em{font-style:italic;color:var(--gold);}
+    .section-h.light{color:#fff;}.section-h.light em{color:var(--gold-light);}
+    .section-h.dark{color:var(--dark);}
 
-    .nav-sep {
-      width:1px; height:16px;
-      background:rgba(255,255,255,0.1);
-      flex-shrink:0; margin:0 0.25rem;
-    }
+    /* INTRO */
+    .intro-band{background:var(--cream);padding:clamp(4rem,10vw,7rem) var(--pad);}
+    .intro-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem;}
+    .intro-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,8vw,4.4rem);font-weight:600;color:var(--dark);line-height:1.04;}
+    .intro-inner h2 em{font-style:italic;color:var(--gold);}
+    .intro-body{font-size:clamp(.9rem,2.5vw,1.05rem);line-height:1.85;color:var(--muted);}
+    @media(min-width:700px){.intro-inner{flex-direction:row;align-items:center;gap:clamp(3rem,7vw,6rem);}.intro-inner h2,.intro-body{flex:1;}}
 
-    /* ━━ HERO ━━ */
-    #home {
-      min-height:100vh;
-      position:relative;
-      display:flex; align-items:center; justify-content:center;
-      text-align:center;
-      overflow:hidden;
-      background:var(--black);
-    }
-    #heroBg {
-      position:absolute; inset:-60px;
-      background-image:url('hero-bg.jpg');
-      background-size:cover; background-position:center 55%;
-      filter:brightness(0.42);
-      will-change:transform;
-    }
-    .hero-overlay {
-      position:absolute; inset:0; z-index:1;
-      background:linear-gradient(to bottom,
-        rgba(10,10,12,0.35) 0%,
-        rgba(10,10,12,0.05) 45%,
-        rgba(10,10,12,0.7) 100%);
-      pointer-events:none;
-    }
-    .hero-content {
-      position:relative; z-index:2;
-      padding:calc(var(--nav-h) + 4rem) 2rem 5rem;
-      max-width:920px;
-      display:flex; flex-direction:column; align-items:center;
-    }
-    .hero-eyebrow {
-      font-family:'Manrope', sans-serif;
-      font-size:0.68rem; font-weight:700;
-      letter-spacing:5px; text-transform:uppercase;
-      color:var(--gold-h);
-      margin-bottom:1.5rem;
-      display:flex; align-items:center; gap:0.8rem;
-    }
-    .hero-eyebrow::before,
-    .hero-eyebrow::after {
-      content:''; display:block;
-      width:28px; height:1px; background:var(--gold);
-    }
-    .hero-h1 {
-      font-family:'Syne', sans-serif;
-      font-weight:800;
-      font-size:clamp(3rem, 7.5vw, 6.4rem);
-      line-height:1.04;
-      letter-spacing:-2px;
-      text-transform:uppercase;
-      margin-bottom:1.8rem;
-    }
-    .hero-h1 .line-main {
-      display:block;
-      color:#ffffff;
-      text-shadow:0 2px 20px rgba(255,255,255,0.1);
-    }
-    .hero-h1 .line-accent {
-      display:block;
-      background:linear-gradient(100deg, #C4932A 0%, #F5C84A 42%, #E8B84A 62%, #C4932A 100%);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-      filter:drop-shadow(0 0 20px rgba(232,184,74,0.5));
-      font-size:1.1em;
-      letter-spacing:-3px;
-    }
-    .hero-divider {
-      width:70px; height:1px;
-      background:linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin-bottom:1.5rem;
-    }
-    .hero-tagline {
-      font-family:'Manrope', sans-serif;
-      font-size:0.85rem; font-weight:500;
-      letter-spacing:2.5px; text-transform:uppercase;
-      color:rgba(255,255,255,0.55);
-      margin-bottom:3rem;
-    }
-    .hero-btns {
-      display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;
-    }
-    .scroll-cue {
-      position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
-      z-index:2; color:rgba(255,255,255,0.3);
-      cursor:pointer; text-align:center;
-      animation:cue-bob 2.2s ease-in-out infinite;
-    }
-    .scroll-cue span {
-      display:block; font-size:0.55rem;
-      letter-spacing:3px; text-transform:uppercase;
-      font-family:'Manrope', sans-serif; margin-top:0.3rem;
-    }
+    /* SERVICES */
+    #services{background:var(--dark);padding:clamp(4rem,10vw,7rem) var(--pad);}
+    .svc-header{max-width:1100px;margin:0 auto;margin-bottom:clamp(2.5rem,5vw,4rem);display:flex;flex-direction:column;gap:.9rem;}
+    .svc-sub{color:var(--muted);font-size:.9rem;line-height:1.7;max-width:360px;}
+    @media(min-width:700px){.svc-header{flex-direction:row;align-items:flex-end;justify-content:space-between;}}
+    .svc-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1px;background:var(--gold-border);}
+    @media(min-width:560px){.svc-grid{grid-template-columns:1fr 1fr;}}
+    @media(min-width:1020px){.svc-grid{grid-template-columns:repeat(4,1fr);}}
+    .svc-card{background:var(--dark2);padding:clamp(2rem,4vw,2.8rem) clamp(1.5rem,3vw,2.2rem);position:relative;overflow:hidden;transition:background .3s;}
+    .svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-metal);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+    .svc-card:hover{background:var(--dark3);}
+    .svc-card:hover::before{transform:scaleX(1);}
+    .svc-icon{width:50px;height:50px;border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.4rem;transition:border-color .3s,background .3s;}
+    .svc-card:hover .svc-icon{border-color:var(--gold);background:var(--gold-dim);}
+    .svc-card h3{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.7rem;}
+    .svc-card p{font-size:.87rem;color:var(--muted);line-height:1.7;}
 
-    /* ━━ TICKER ━━ */
-    .ticker-wrap {
-      background:var(--black);
-      border-top:1px solid var(--gold);
-      border-bottom:1px solid var(--gold);
-      overflow:hidden; padding:0.75rem 0;
-    }
-    .ticker-track {
-      display:flex; width:max-content; white-space:nowrap;
-      animation:tick 30s linear infinite;
-    }
-    .ticker-track:hover { animation-play-state:paused; }
-    .ticker-item {
-      display:inline-flex; align-items:center; gap:0.6rem;
-      font-family:'Manrope', sans-serif;
-      color:var(--gold-h); font-weight:600;
-      font-size:0.7rem; letter-spacing:2.5px;
-      text-transform:uppercase; padding:0 2.5rem;
-    }
-    .tdot { width:4px; height:4px; background:var(--gold); border-radius:50%; flex-shrink:0; }
-    .ticker-item a { color:var(--gold-h); text-decoration:none; transition:color 0.2s; }
-    .ticker-item a:hover { color:#fff; }
+    /* ABOUT */
+    #about{background:var(--cream);padding:clamp(4rem,10vw,7rem) var(--pad);}
+    .about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,7vw,5rem);}
+    @media(min-width:860px){.about-inner{grid-template-columns:1fr 1.4fr;align-items:start;}}
+    .about-text .eyebrow{display:inline-flex;}
+    .about-text .section-h{margin-bottom:1.2rem;}
+    .about-text p{font-size:.95rem;line-height:1.85;color:var(--muted);margin-bottom:.9rem;}
+    .about-feats{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.8rem;}
+    .feat{display:flex;align-items:center;gap:.6rem;}
+    .feat-dot{width:5px;height:5px;flex-shrink:0;background:var(--gold);}
+    .feat span{font-size:.82rem;font-weight:600;color:var(--text);}
 
-    /* ━━ CTA STRIP ━━ */
-    .cta-strip {
-      background:var(--white);
-      padding:5rem 4rem;
-      border-bottom:1px solid var(--border);
-    }
-    .cta-label {
-      font-family:'Manrope', sans-serif;
-      font-size:0.65rem; font-weight:700;
-      letter-spacing:4px; text-transform:uppercase;
-      color:var(--gold); display:block; margin-bottom:1rem;
-    }
-    .cta-headline {
-      font-family:'Syne', sans-serif;
-      font-weight:800; font-size:clamp(2.6rem, 5.5vw, 4.8rem);
-      text-transform:uppercase; letter-spacing:-1.5px;
-      line-height:0.95; color:var(--black);
-      margin-bottom:2.5rem;
-    }
-    .cta-headline span { color:var(--gold); display:block; }
-    .cta-btns { display:flex; flex-wrap:wrap; gap:1rem; }
+    /* GALLERY */
+    .work-gallery{columns:2;column-gap:6px;}
+    @media(min-width:600px){.work-gallery{columns:3;}}
+    .gallery-item{break-inside:avoid;margin-bottom:6px;overflow:hidden;position:relative;cursor:pointer;background:var(--dark3);}
+    .gallery-item img{width:100%;height:auto;display:block;transition:transform .4s ease;object-fit:cover;}
+    .gallery-item:hover img{transform:scale(1.05);}
+    .gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(200,144,42,.3),transparent 60%);opacity:0;transition:opacity .3s;}
+    .gallery-item:hover::after{opacity:1;}
+    .gph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--dark2),var(--dark3));color:var(--muted);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;}
+    .gph.tall{aspect-ratio:3/4;}.gph.wide{aspect-ratio:4/3;}.gph.sq{aspect-ratio:1/1;}
 
-    /* ━━ SECTIONS — SHARED ━━ */
-    .section-wrap { padding:6rem 4rem; text-align:center; }
-    .section-wrap.dark  { background:var(--black); }
-    .section-wrap.stone { background:var(--stone); }
-    .section-wrap.white { background:var(--white); }
+    /* LIGHTBOX */
+    .lightbox{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.93);align-items:center;justify-content:center;padding:2rem;}
+    .lightbox.open{display:flex;}
+    .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border:1px solid var(--gold-border);}
+    .lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:rgba(255,255,255,.5);font-size:2rem;cursor:pointer;line-height:1;transition:color .2s;}
+    .lb-close:hover{color:var(--gold);}
+    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid var(--gold-border);color:rgba(255,255,255,.6);font-size:1.6rem;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
+    .lb-nav:hover{background:var(--gold-dim);color:var(--gold);}
+    .lb-prev{left:1rem;}.lb-next{right:1rem;}
 
-    .sec-label {
-      font-family:'Manrope', sans-serif;
-      font-size:0.65rem; font-weight:700;
-      letter-spacing:4px; text-transform:uppercase;
-      color:var(--gold); display:block; margin-bottom:0.8rem;
-    }
-    .sec-title {
-      font-family:'Syne', sans-serif;
-      font-weight:800; font-size:clamp(1.8rem, 3.2vw, 2.8rem);
-      text-transform:uppercase; letter-spacing:-0.5px;
-      line-height:1.05; color:var(--black); margin-bottom:0.8rem;
-    }
-    .sec-title.light { color:#fff; }
-    .sec-sub {
-      font-family:'Manrope', sans-serif;
-      font-size:0.9rem; color:var(--gray);
-      line-height:1.8; max-width:500px; margin:0 auto 3rem;
-    }
-    .sec-sub.light { color:rgba(255,255,255,0.5); }
+    /* QUOTE */
+    #quote{background:var(--cream2);padding:clamp(4rem,10vw,7rem) var(--pad);}
+    .quote-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,7vw,5rem);}
+    @media(min-width:860px){.quote-wrap{grid-template-columns:1fr 1.6fr;align-items:start;}}
+    .q-left .section-h{color:var(--dark);margin-bottom:.9rem;}
+    .q-left>p{color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:1.6rem;}
+    .q-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:2rem;}
+    .q-list{display:flex;flex-direction:column;gap:.75rem;}
+    .q-item{display:flex;align-items:center;gap:.75rem;font-size:.85rem;font-weight:600;color:var(--text);}
+    .q-check{width:22px;height:22px;flex-shrink:0;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--gold);}
+    .qform{display:flex;flex-direction:column;gap:1.1rem;}
+    .flabel{display:block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:.4rem;}
+    .qform input,.qform textarea,.qform select{width:100%;padding:.9rem 1rem;border:1px solid #d2ccc0;background:#fff;color:var(--text);font-family:'Syne',sans-serif;font-size:max(16px,.9rem);transition:border-color .2s,box-shadow .2s;appearance:none;border-radius:0;}
+    .qform input:focus,.qform textarea:focus,.qform select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,144,42,.12);}
+    .qform input::placeholder,.qform textarea::placeholder{color:#b0a89e;}
+    .qform textarea{min-height:120px;resize:vertical;}
+    .sel-wrap{position:relative;}
+    .sel-wrap::after{content:'▾';position:absolute;right:1rem;top:50%;transform:translateY(-50%);color:var(--gold);pointer-events:none;}
+    .form-row{display:grid;gap:1rem;grid-template-columns:1fr;}
+    @media(min-width:480px){.form-row{grid-template-columns:1fr 1fr;}}
+    .btn-submit{width:100%;height:54px;background:var(--dark);color:#fff;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;border:none;cursor:pointer;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));transition:background .2s,transform .2s;position:relative;overflow:hidden;}
+    .btn-submit:hover{background:var(--gold);transform:translateY(-2px);}
+    .btn-submit::after{content:'';position:absolute;top:-20%;left:-120%;width:60%;height:140%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,220,.4) 50%,transparent 80%);transform:skewX(-20deg);animation:shimmer 8s ease-in-out infinite;}
+    .btn-submit:active{transform:translateY(0);}
+    .form-ok{display:none;text-align:center;padding:2.5rem 1.5rem;border:1px solid var(--gold);background:rgba(200,144,42,.05);}
+    .form-ok .ok-icon{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;margin:0 auto 1rem;}
+    .form-ok p{color:var(--muted);font-size:.9rem;}
 
-    /* ━━ SERVICES ━━ */
-    .cat-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
-      gap:1.4rem; max-width:1100px; margin:0 auto 2rem;
-    }
-    .cat-card {
-      background:var(--white); border:1px solid var(--border);
-      overflow:hidden;
-      transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    }
-    .cat-card:hover {
-      transform:translateY(-8px);
-      box-shadow:0 18px 50px rgba(0,0,0,0.1);
-      border-color:var(--gold);
-    }
-    .cat-img {
-      height:220px; background-size:cover; background-position:center;
-      transition:transform 0.45s;
-    }
-    .cat-card:hover .cat-img { transform:scale(1.05); }
-    .cat-body { padding:1.3rem 1.5rem 1.5rem; text-align:left; }
-    .cat-body h3 {
-      font-family:'Syne', sans-serif;
-      font-size:1rem; font-weight:800;
-      text-transform:uppercase; letter-spacing:0.5px;
-      color:var(--black); margin-bottom:0.35rem;
-    }
-    .cat-body p {
-      font-family:'Manrope', sans-serif;
-      font-size:0.72rem; color:var(--gray);
-      letter-spacing:0.6px; line-height:1.8; text-transform:uppercase;
-    }
-    .services-more {
-      font-family:'Manrope', sans-serif;
-      font-size:0.85rem; color:var(--gray); margin-top:0.5rem;
-    }
-    .services-more a {
-      color:var(--gold); font-weight:700;
-      text-decoration:none; border-bottom:1px solid rgba(196,147,42,0.3);
-      transition:border-color 0.2s;
-    }
-    .services-more a:hover { border-color:var(--gold); }
+    /* FOOTER */
+    footer{background:var(--dark);border-top:1px solid rgba(200,144,42,.14);}
+    .foot-inner{max-width:1100px;margin:0 auto;padding:clamp(3rem,7vw,5rem) var(--pad) clamp(1.5rem,4vw,2.5rem);display:grid;grid-template-columns:1fr;gap:2.5rem;}
+    @media(min-width:580px){.foot-inner{grid-template-columns:1fr 1fr;}}
+    @media(min-width:860px){.foot-inner{grid-template-columns:1.5fr 1fr 1fr;}}
+    .foot-brand .f-name{font-size:.76rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.17em;display:block;margin-bottom:.8rem;}
+    .foot-brand p{color:var(--muted);font-size:.85rem;line-height:1.7;max-width:260px;}
+    .foot-col h4{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);margin-bottom:1.2rem;}
+    .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+    .foot-col ul a{color:var(--muted);text-decoration:none;font-size:.87rem;transition:color .2s;}
+    .foot-col ul a:hover{color:#fff;}
+    .foot-email{color:var(--gold)!important;font-weight:600!important;}
+    .foot-bottom{border-top:1px solid rgba(255,255,255,.06);padding:1.5rem var(--pad);max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;}
+    .foot-bottom p{font-size:.75rem;color:rgba(255,255,255,.22);}
+    .foot-bottom a{color:var(--gold);font-size:.78rem;font-weight:600;text-decoration:none;}
+    .foot-bottom a:hover{color:var(--gold-light);}
 
-    /* ━━ QUOTE FORM ━━ */
-    .quote-form {
-      max-width:560px; margin:0 auto;
-      display:flex; flex-direction:column; gap:0.85rem; text-align:left;
-    }
-    .quote-form input,
-    .quote-form textarea,
-    .quote-form select {
-      padding:0.9rem 1.1rem;
-      border:1px solid #1e1e28;
-      background:#111118; color:#fff;
-      font-family:'Manrope', sans-serif; font-size:0.9rem;
-      width:100%; outline:none;
-      transition:border-color 0.2s;
-      appearance:none;
-    }
-    .quote-form input::placeholder,
-    .quote-form textarea::placeholder { color:#3a3a48; }
-    .quote-form input:focus,
-    .quote-form textarea:focus,
-    .quote-form select:focus { border-color:var(--gold); }
-    .quote-form textarea { min-height:120px; resize:vertical; }
-    .quote-form select { cursor:pointer; }
-    .quote-form select option { background:#111118; }
-    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.85rem; }
-    .field-label {
-      font-family:'Manrope', sans-serif;
-      color:#404050; font-size:0.68rem; font-weight:700;
-      letter-spacing:2px; text-transform:uppercase;
-      display:block; margin-bottom:0.4rem;
-    }
-    .pref-options { display:flex; gap:0.7rem; }
-    .pref-options label {
-      flex:1; display:flex; align-items:center; justify-content:center; gap:0.4rem;
-      padding:0.85rem; border:1px solid #1e1e28;
-      background:#111118; color:#404050;
-      font-family:'Manrope', sans-serif;
-      font-size:0.78rem; font-weight:600;
-      letter-spacing:0.8px; text-transform:uppercase;
-      cursor:pointer; transition:all 0.2s;
-    }
-    .pref-options input[type="radio"] { display:none; }
-    .pref-options label.active {
-      border-color:var(--gold);
-      background:rgba(196,147,42,0.08);
-      color:var(--gold-h);
-    }
-    .pref-options label:hover:not(.active) {
-      border-color:rgba(196,147,42,0.4);
-      color:rgba(255,255,255,0.6);
-    }
-
-    /* ━━ SHOP ━━ */
-    .shop-box {
-      max-width:1040px; margin:0 auto;
-      border:1px solid var(--border);
-      padding:3.5rem 2rem; background:var(--white);
-    }
-    .shop-box strong {
-      font-family:'Syne', sans-serif;
-      color:var(--gold); display:block;
-      font-size:1rem; letter-spacing:1px; margin-bottom:0.6rem;
-    }
-    .shop-box p {
-      font-family:'Manrope', sans-serif;
-      color:var(--gray); font-size:0.85rem; line-height:1.7;
-    }
-    .shop-box code {
-      display:inline-block; margin-top:0.4rem;
-      font-size:0.75rem; color:var(--gold);
-      background:rgba(196,147,42,0.08);
-      padding:0.2rem 0.5rem; border-radius:2px;
-    }
-
-    /* ━━ CONTACT ━━ */
-    .contact-cards {
-      display:flex; flex-wrap:wrap; gap:2rem;
-      justify-content:center; max-width:720px; margin:0 auto;
-    }
-    .contact-card {
-      flex:1; min-width:240px; text-align:center;
-      border:1px solid var(--border); padding:2.5rem 2rem;
-      background:var(--stone);
-      transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    }
-    .contact-card:hover {
-      transform:translateY(-6px);
-      box-shadow:0 12px 36px rgba(0,0,0,0.08);
-      border-color:var(--gold);
-    }
-    .cc-icon { font-size:1.8rem; display:block; margin-bottom:0.7rem; }
-    .avail-badge {
-      display:inline-block;
-      font-family:'Manrope', sans-serif;
-      font-size:0.6rem; font-weight:700;
-      letter-spacing:1.5px; text-transform:uppercase;
-      color:var(--gold); border:1px solid rgba(196,147,42,0.25);
-      background:rgba(196,147,42,0.07);
-      padding:0.2rem 0.7rem; margin-bottom:0.7rem;
-    }
-    .contact-card h3 {
-      font-family:'Syne', sans-serif;
-      font-size:1.05rem; font-weight:800;
-      text-transform:uppercase; color:var(--black); margin-bottom:0.5rem;
-    }
-    .contact-card a {
-      font-family:'Manrope', sans-serif;
-      color:var(--black); font-size:0.95rem; font-weight:600;
-      text-decoration:none; display:block; transition:color 0.2s;
-    }
-    .contact-card a:hover { color:var(--gold); }
-    .cc-hours { margin-top:0.4rem; font-size:0.75rem; color:var(--gray); }
-
-    /* ━━ ABOUT ━━ */
-    .about-inner { max-width:680px; margin:0 auto; }
-    .about-inner p {
-      font-family:'Manrope', sans-serif;
-      font-size:0.97rem; line-height:2; color:var(--gray); margin-bottom:1rem;
-    }
-
-    /* ━━ SCROLL REVEAL ━━ */
-    .reveal {
-      opacity:0; transform:translateY(24px);
-      transition:opacity 0.75s ease, transform 0.75s ease;
-    }
-    .reveal.on { opacity:1; transform:translateY(0); }
-
-    /* ━━ FOOTER ━━ */
-    footer {
-      background:var(--black);
-      border-top:2px solid var(--gold);
-      padding:2.5rem 3rem;
-      display:flex; align-items:center;
-      justify-content:space-between; flex-wrap:wrap; gap:1.5rem;
-    }
-    .footer-brand {
-      font-family:'Bebas Neue', sans-serif;
-      font-size:1.3rem; letter-spacing:3px;
-      color:var(--gold-h); text-decoration:none;
-    }
-    .footer-nav { display:flex; gap:2rem; flex-wrap:wrap; }
-    .footer-nav a {
-      font-family:'Manrope', sans-serif;
-      font-size:0.72rem; font-weight:600;
-      letter-spacing:1.5px; text-transform:uppercase;
-      color:rgba(255,255,255,0.35); text-decoration:none;
-      transition:color 0.2s;
-    }
-    .footer-nav a:hover { color:var(--gold-h); }
-    .footer-right {
-      font-family:'Manrope', sans-serif;
-      font-size:0.7rem; color:rgba(255,255,255,0.25);
-      text-align:right; line-height:2;
-    }
-    .footer-right a { color:rgba(232,184,74,0.5); text-decoration:none; transition:color 0.2s; }
-    .footer-right a:hover { color:var(--gold-h); }
-
-    /* ━━ RESPONSIVE ━━ */
-    @media (max-width:900px) {
-      .hero-btns { flex-direction:column; align-items:center; }
-      .cta-strip { padding:4rem 2rem; }
-      .cta-btns { flex-direction:column; }
-      .section-wrap { padding:4rem 1.5rem; }
-      .form-row { grid-template-columns:1fr; }
-      .pref-options { flex-direction:column; }
-      footer { flex-direction:column; text-align:center; padding:2rem 1.5rem; }
-      .footer-right { text-align:center; }
-      .footer-nav { justify-content:center; }
-    }
-    @media (max-width:650px) {
-      :root { --nav-h:54px; }
-      #mainNav { padding:0 0.8rem; }
-      .logo-text { font-size:1.2rem; letter-spacing:2px; }
-      .nav-sep { display:none; }
-      .nav-links { gap:0; }
-      .nav-links li a { font-size:0.6rem; padding:0.35rem 0.45rem; letter-spacing:0.3px; }
-      .nav-links li a.nav-cta { padding:0.35rem 0.6rem; }
-      .nav-links li a.nav-shop { padding:0.32rem 0.5rem; }
-    }
-
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.in{opacity:1;transform:none;}
+    .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+    @media(prefers-reduced-motion:reduce){*,.reveal,#home h1,.hero-tag,.hero-sub,.hero-btns,.hero-stats{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;}}
   </style>
 </head>
 <body>
 
-<!-- ━━ NAV ━━ -->
-<nav id="mainNav">
-  <a href="#home" class="logo-wrap">
-    <img src="logo.png" alt="" onerror="this.style.display='none'"/>
-    <span class="logo-text">Quality Silkscreens</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#quote" class="nav-cta">Free Quote</a></li>
-    <li><div class="nav-sep"></div></li>
-    <li><a href="tel:+17575810004">📞 Call Now</a></li>
-    <li><div class="nav-sep"></div></li>
-    <li><a href="#shop" class="nav-shop">Our Shop</a></li>
-    <li><div class="nav-sep"></div></li>
-    <li><a href="#contact">Contact Us</a></li>
-    <li><div class="nav-sep"></div></li>
-    <li><a href="#about">About</a></li>
-  </ul>
-</nav>
+  <nav id="mainNav">
+    <a href="#home" class="logo" aria-label="Quality Silkscreens home">
+      <div class="logo-mark" aria-hidden="true">QS</div>
+      <span class="logo-text">Quality Silkscreens</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Products</a></li>
+      <li><a href="#quote">Get a Quote</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<!-- ━━ HERO ━━ -->
-<section id="home">
-  <div id="heroBg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Quality Silkscreens</p>
-    <h1 class="hero-h1">
-      <span class="line-main">High Quality</span>
-      <span class="line-accent">Custom Apparel</span>
-    </h1>
-    <div class="hero-divider"></div>
-    <p class="hero-tagline">Businesses &nbsp;·&nbsp; Special Events &nbsp;·&nbsp; Teams</p>
-    <div class="hero-btns">
-      <a href="tel:+17575810004" class="btn-gold">📞 &nbsp;Call for a Free Quote</a>
-      <a href="#quote" class="btn-ghost">✉️ &nbsp;Email a Free Quote</a>
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
+    <a href="#home"     onclick="closeMenu()">Home</a>
+    <a href="#about"    onclick="closeMenu()">About</a>
+    <a href="#services" onclick="closeMenu()">Products</a>
+    <a href="#quote"    onclick="closeMenu()">Get a Free Quote</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="home" aria-label="Hero">
+    <div class="hero-bg" id="heroBg" role="presentation"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-tag" aria-hidden="true">Custom Apparel</div>
+      <h1>High Quality.<br/><em>Low Cost.</em></h1>
+      <p class="hero-sub">Your design on fabric &#8212; done right, priced right, delivered fast.</p>
+      <div class="hero-btns">
+        <a href="tel:+17575810004" class="btn-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call (757) 581-0004
+        </a>
+        <a id="emailBtn" href="#" class="btn-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+          Email for a Quote
+        </a>
+        <a href="#quote" class="btn-outline">Fill Out the Form</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">Custom Apparel <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Outerwear <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Business Wear <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Hats &amp; Caps <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Bags &amp; Accessories <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">High Quality &#183; Low Cost <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Free Design Help <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Fast Turnaround <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Express Options Available <span class="marquee-dot">&#9670;</span></span>
+      
+      <span class="marquee-item">Custom Apparel <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Outerwear <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Business Wear <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Hats &amp; Caps <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Bags &amp; Accessories <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">High Quality &#183; Low Cost <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Free Design Help <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Fast Turnaround <span class="marquee-dot">&#9670;</span></span>
+      <span class="marquee-item">Express Options Available <span class="marquee-dot">&#9670;</span></span>
     </div>
   </div>
-  <div class="scroll-cue" id="scrollCue">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M6 9l6 6 6-6"/>
-    </svg>
-    <span>Scroll</span>
-  </div>
-</section>
 
-<!-- ━━ TICKER ━━ -->
-<div class="ticker-wrap" id="ticker">
-  <div class="ticker-track">
-    <span class="ticker-item"><span class="tdot"></span>Lower Cost · Higher Quality</span>
-    <span class="ticker-item"><span class="tdot"></span>Fast Turnaround · Competitive Pricing</span>
-    <span class="ticker-item"><span class="tdot"></span>Free Quotes · No Commitment</span>
-    <span class="ticker-item"><span class="tdot"></span><a href="tel:+17575810004">(757) 581-0004</a></span>
-    <span class="ticker-item"><span class="tdot"></span><a href="mailto:qualitysilkscreens@gmail.com">qualitysilkscreens@gmail.com</a></span>
-    <span class="ticker-item"><span class="tdot"></span>Screen Printing · Embroidery · Heat Transfer</span>
-    <span class="ticker-item"><span class="tdot"></span>Lower Cost · Higher Quality</span>
-    <span class="ticker-item"><span class="tdot"></span>Fast Turnaround · Competitive Pricing</span>
-    <span class="ticker-item"><span class="tdot"></span>Free Quotes · No Commitment</span>
-    <span class="ticker-item"><span class="tdot"></span><a href="tel:+17575810004">(757) 581-0004</a></span>
-    <span class="ticker-item"><span class="tdot"></span><a href="mailto:qualitysilkscreens@gmail.com">qualitysilkscreens@gmail.com</a></span>
-    <span class="ticker-item"><span class="tdot"></span>Screen Printing · Embroidery · Heat Transfer</span>
-  </div>
-</div>
-
-<!-- ━━ CTA STRIP ━━ -->
-<div class="cta-strip">
-  <span class="cta-label">Our Promise</span>
-  <p class="cta-headline">Lower Cost<br/><span>Higher Quality</span></p>
-  <div class="cta-btns">
-    <a href="tel:+17575810004" class="btn-gold">📞 &nbsp;(757) 581-0004</a>
-    <a href="mailto:qualitysilkscreens@gmail.com" class="btn-gold">✉️ &nbsp;qualitysilkscreens@gmail.com</a>
-  </div>
-</div>
-
-<!-- ━━ SERVICES ━━ -->
-<section id="services" class="section-wrap stone reveal">
-  <span class="sec-label">What We Outfit</span>
-  <h2 class="sec-title">Premium Apparel &amp; Accessories</h2>
-  <p class="sec-sub">Built for businesses, teams, and every occasion that demands a polished look.</p>
-  <div class="cat-grid">
-    <div class="cat-card">
-      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80')"></div>
-      <div class="cat-body"><h3>Outerwear</h3><p>Jackets · Hoodies · Zip-Ups · Vests · Pullovers</p></div>
-    </div>
-    <div class="cat-card">
-      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1603252109303-2751441dd157?w=800&q=80')"></div>
-      <div class="cat-body"><h3>Businesswear</h3><p>Polos · Button-Ups · T-Shirts · Dress Shirts · Uniforms</p></div>
-    </div>
-    <div class="cat-card">
-      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=800&q=80')"></div>
-      <div class="cat-body"><h3>Hats &amp; Caps</h3><p>Snapbacks · Beanies · Truckers · Dad Hats · Visors</p></div>
-    </div>
-    <div class="cat-card">
-      <div class="cat-img" style="background-image:url('https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80')"></div>
-      <div class="cat-body"><h3>Bags &amp; Accessories</h3><p>Tote Bags · Backpacks · Lanyards · Aprons &amp; More</p></div>
+  <!-- TRUST BAR -->
+  <div class="trust-bar" aria-label="Why choose us">
+    <div class="trust-inner">
+      <div class="trust-item reveal"><span class="trust-num">20</span><span class="trust-label">Years in Business</span></div>
+      <div class="trust-item reveal d1"><span class="trust-num">1000+</span><span class="trust-label">Items Delivered in 2026</span></div>
+      <div class="trust-item reveal d1"><span class="trust-num">100+</span><span class="trust-label">Businesses Served</span></div>
+      <div class="trust-item reveal d2"><span class="trust-num">Free</span><span class="trust-label">Design Help</span></div>
+      <div class="trust-item reveal d2"><span class="trust-num">Fast</span><span class="trust-label">Express Options Available</span></div>
     </div>
   </div>
-  <p class="services-more">Looking for something else? <a href="#quote">Request a custom quote.</a></p>
-</section>
 
-<!-- ━━ QUOTE FORM ━━ -->
-<section id="quote" class="section-wrap dark reveal">
-  <span class="sec-label">Get Started</span>
-  <h2 class="sec-title light">Request a Free Quote</h2>
-  <p class="sec-sub light">Tell us about your order — we respond fast, free, and with no commitment.</p>
-  <form class="quote-form" action="https://formsubmit.co/qualitysilkscreens@gmail.com" method="POST">
-    <input type="hidden" name="_captcha" value="false"/>
-    <input type="hidden" name="_subject" value="New Quote Request — Quality Silkscreens"/>
-    <input type="hidden" name="_template" value="table"/>
-    <div class="form-row">
-      <input type="text" name="name" placeholder="Your Name" required/>
-      <input type="email" name="email" placeholder="Email Address" required/>
+  <!-- INTRO -->
+  <div class="intro-band">
+    <div class="intro-inner">
+      <h2 class="reveal">Custom Apparel<br/><em>Done Right.</em></h2>
+      <p class="intro-body reveal d1">Your vision on fabric, executed with care. We specialize in custom apparel for businesses, teams, and events &#8212; delivering vibrant, lasting results at prices that make sense. With 20 years of experience, 1,000+ items delivered in 2026 alone, and hundreds of happy clients, we know how to get it right the first time. Whether you need 10 pieces or 1,000, we&#8217;ve got you.</p>
     </div>
-    <input type="tel" name="phone" placeholder="Phone Number"/>
-    <select name="garment">
-      <option value="" disabled selected>Garment / Item Type (optional)</option>
-      <option>Outerwear — Jackets, Hoodies, Zip-Ups</option>
-      <option>Businesswear — Polos, Button-Ups, T-Shirts</option>
-      <option>Hats &amp; Caps</option>
-      <option>Bags &amp; Accessories</option>
-      <option>Multiple / Mixed</option>
-      <option>Not Sure — I'll describe below</option>
-    </select>
-    <div class="form-row">
-      <input type="number" name="quantity" placeholder="Estimated Quantity" min="1"/>
-      <input type="text" name="timeline" placeholder="Needed By (date or ASAP)"/>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="services" aria-label="Our products">
+    <div class="svc-header">
+      <div>
+        <div class="eyebrow reveal">What We Print</div>
+        <h2 class="section-h light reveal d1">Our <em>Products</em></h2>
+      </div>
+      <p class="svc-sub reveal d2">From jackets to laptop bags &#8212; if it can be worn or carried, we can put your brand on it.</p>
     </div>
-    <div>
-      <span class="field-label">Preferred Follow-Up Method</span>
-      <div class="pref-options" id="prefOptions">
-        <label class="active">
-          <input type="radio" name="contact_preference" value="Call me back" checked/>
-          <span>📞 &nbsp;Call Me Back</span>
-        </label>
-        <label>
-          <input type="radio" name="contact_preference" value="Email me"/>
-          <span>✉️ &nbsp;Email Me</span>
-        </label>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <div class="svc-icon" aria-hidden="true">&#x1F9E5;</div>
+        <h3>Outerwear</h3>
+        <p>Jackets, hoodies, zip-ups, and fleece with your brand printed or embroidered. Built for comfort and made to be noticed on the job or out in the world.</p>
+      </div>
+      <div class="svc-card reveal d1">
+        <div class="svc-icon" aria-hidden="true">&#x1F454;</div>
+        <h3>Business Wear</h3>
+        <p>Polos, button-downs, uniforms, and branded tees that keep your team looking sharp &#8212; perfect for work crews, retail, hospitality, and corporate staff.</p>
+      </div>
+      <div class="svc-card reveal d2">
+        <div class="svc-icon" aria-hidden="true">&#x1F9E2;</div>
+        <h3>Hats &amp; Caps</h3>
+        <p>Structured caps, beanies, trucker hats, and snapbacks with your logo embroidered or printed. A walking billboard people actually want to wear.</p>
+      </div>
+      <div class="svc-card reveal d3">
+        <div class="svc-icon" aria-hidden="true">&#x1F392;</div>
+        <h3>Bags &amp; Accessories</h3>
+        <p>Aprons, backpacks, laptop bags, tote bags, and more &#8212; customizable with your design. Great for uniforms, events, giveaways, and branded merch.</p>
       </div>
     </div>
-    <textarea name="details" placeholder="Describe your design, logo, colors, or any details…"></textarea>
-    <button type="submit" class="btn-gold" style="width:100%;padding:1.1rem;justify-content:center;">
-      Send My Free Quote Request
-    </button>
-  </form>
-</section>
+  </section>
 
-<!-- ━━ SHOP ━━ -->
-<section id="shop" class="section-wrap stone reveal">
-  <span class="sec-label">Online Store</span>
-  <h2 class="sec-title">Our Shop</h2>
-  <p class="sec-sub">Browse and order directly — powered by Square.</p>
-  <div class="shop-box">
-    <strong>Square Shop Embed</strong>
-    <p>To activate: Square Dashboard → Online Store → Share → "Embed your store"<br/>
-    Then replace this box with your <code>&lt;script&gt;</code> embed tag.</p>
-  </div>
-</section>
-
-<!-- ━━ CONTACT ━━ -->
-<section id="contact" class="section-wrap white reveal">
-  <span class="sec-label">Reach Out</span>
-  <h2 class="sec-title">Contact Us</h2>
-  <p class="sec-sub">Available 7 days a week — reach out however works best for you.</p>
-  <div class="contact-cards">
-    <div class="contact-card">
-      <span class="cc-icon">📞</span>
-      <div class="avail-badge">Call or Text</div>
-      <h3>Phone</h3>
-      <a href="tel:+17575810004">(757) 581-0004</a>
-      <p class="cc-hours">9 AM – 9 PM · 7 Days a Week</p>
+  <!-- QUOTE -->
+  <section id="quote" aria-label="Get a free quote">
+    <div class="quote-wrap">
+      <div class="q-left">
+        <div class="eyebrow reveal">Work With Us</div>
+        <h2 class="section-h dark reveal d1">Get a<br/><em>Free</em><br/>Quote</h2>
+        <p class="reveal d1">Reach out directly for the fastest reply, or fill out the form and we&#8217;ll respond within 24 hours. Express turnaround options available &#8212; just ask.</p>
+        <div class="q-cta reveal d1">
+          <a href="tel:+17575810004" class="btn-gold">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (757) 581-0004
+          </a>
+          <a id="emailBtn2" href="#" class="btn-gold">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            Email Us
+          </a>
+        </div>
+        <ul class="q-list reveal d2" style="list-style:none">
+          <li class="q-item"><div class="q-check">&#x2713;</div>Response within 24 hours</li>
+          <li class="q-item"><div class="q-check">&#x2713;</div>No commitment required</li>
+          <li class="q-item"><div class="q-check">&#x2713;</div>Express turnaround available</li>
+          <li class="q-item"><div class="q-check">&#x2713;</div>Free design help included</li>
+        </ul>
+      </div>
+      <div>
+        <form class="qform reveal" id="quoteForm" method="POST" novalidate>
+          <div class="form-row">
+            <div>
+              <label class="flabel" for="fn">Your Name *</label>
+              <input type="text" id="fn" name="name" placeholder="Jane Smith" required autocomplete="name"/>
+            </div>
+            <div>
+              <label class="flabel" for="fe">Email Address *</label>
+              <input type="email" id="fe" name="email" placeholder="you@email.com" required autocomplete="email"/>
+            </div>
+          </div>
+          <div>
+            <label class="flabel" for="fp">Phone Number</label>
+            <input type="tel" id="fp" name="phone" placeholder="(555) 000-0000" autocomplete="tel"/>
+          </div>
+          <div>
+            <label class="flabel" for="fs">Product Category *</label>
+            <div class="sel-wrap">
+              <select id="fs" name="category" required>
+                <option value="" disabled selected>Select a category&#8230;</option>
+                <option>Outerwear</option>
+                <option>Business Wear</option>
+                <option>Hats &amp; Caps</option>
+                <option>Bags &amp; Accessories</option>
+                <option>Mixed / Multiple Categories</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label class="flabel" for="fq">Estimated Quantity</label>
+              <input type="number" id="fq" name="quantity" placeholder="e.g. 50 (min. 10)" min="10" inputmode="numeric"/>
+            </div>
+            <div>
+              <label class="flabel" for="fd">Needed By</label>
+              <input type="text" id="fd" name="timeline" placeholder="Date or ASAP"/>
+            </div>
+          </div>
+          <div>
+            <label class="flabel" for="fx">Design Details</label>
+            <textarea id="fx" name="details" placeholder="Describe your design, colors, garment type, or any other details&#8230;"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send My Quote Request &#8594;</button>
+        </form>
+        <div class="form-ok" id="formOk" role="alert">
+          <div class="ok-icon" aria-hidden="true">&#x2713;</div>
+          <p>Thank you! We&#8217;ll be in touch within 24 hours.</p>
+        </div>
+      </div>
     </div>
-    <div class="contact-card">
-      <span class="cc-icon">✉️</span>
-      <div class="avail-badge">Always Open</div>
-      <h3>Email</h3>
-      <a href="mailto:qualitysilkscreens@gmail.com">qualitysilkscreens@gmail.com</a>
-      <p class="cc-hours">Reply within 24 hours</p>
+  </section>
+
+  <!-- ABOUT + GALLERY -->
+  <section id="about" aria-label="About us">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="eyebrow reveal">Our Story</div>
+        <h2 class="section-h dark reveal d1">A local shop<br/>that <em>cares about</em><br/>every print.</h2>
+        <p class="reveal d1">We are a local custom apparel shop with over 20 years of experience delivering vibrant, lasting results for businesses, teams, sports organizations, and events. From a single custom tee to a full company uniform run, we bring your designs to life &#8212; fast, and exactly right.</p>
+        <p class="reveal d2">We&#8217;ve helped hundreds of businesses and delivered 1,000+ items in 2026 alone. Whether you have a finished logo or just an idea, we&#8217;ll work with you every step of the way &#8212; because your brand deserves nothing less. Need it fast? Ask about our express turnaround options.</p>
+        <div class="about-feats reveal d2">
+          <div class="feat"><div class="feat-dot"></div><span>20 Years Experience</span></div>
+          <div class="feat"><div class="feat-dot"></div><span>Expert Craft</span></div>
+          <div class="feat"><div class="feat-dot"></div><span>Free Design Help</span></div>
+          <div class="feat"><div class="feat-dot"></div><span>Express Options</span></div>
+          <div class="feat"><div class="feat-dot"></div><span>Vibrant Results</span></div>
+        </div>
+      </div>
+
+      <div class="work-gallery reveal d1" id="workGallery" aria-label="Our work">
+        <div class="gallery-item"><div class="gph tall">Photo 1</div></div>
+        <div class="gallery-item"><div class="gph wide">Photo 2</div></div>
+        <div class="gallery-item"><div class="gph sq">Photo 3</div></div>
+        <div class="gallery-item"><div class="gph wide">Photo 4</div></div>
+        <div class="gallery-item"><div class="gph tall">Photo 5</div></div>
+        <div class="gallery-item"><div class="gph sq">Photo 6</div></div>
+        <div class="gallery-item"><div class="gph wide">Photo 7</div></div>
+        <div class="gallery-item"><div class="gph tall">Photo 8</div></div>
+      </div>
     </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lb-close" id="lbClose" aria-label="Close">&#x2715;</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#x2039;</button>
+    <img src="" alt="" id="lbImg"/>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#x203A;</button>
   </div>
-</section>
 
-<!-- ━━ ABOUT ━━ -->
-<section id="about" class="section-wrap stone reveal">
-  <div class="about-inner">
-    <span class="sec-label">Our Story</span>
-    <h2 class="sec-title">About Quality Silkscreens</h2>
-    <p>We are a local custom apparel shop specializing in screen printing, embroidery, and heat transfer. From a single custom polo to a full company uniform order, we bring your brand to life on apparel that looks professional and lasts.</p>
-    <p>We carry a full range of garments — polos, button-ups, hats, jackets, outerwear, hoodies, and more. Whether you have a finished logo or just an idea, our experienced team will work with you to get it exactly right, at a price that makes sense for your business.</p>
-  </div>
-</section>
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <span class="f-name">Quality Silkscreens</span>
+        <p>A local custom apparel shop with 20 years of experience delivering vibrant, lasting results for businesses, teams, and events of all sizes.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Products</a></li>
+          <li><a href="#quote">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a id="footEmail" href="#" class="foot-email">Qualitysilkscreens @ gmail.com</a></li>
+          <li><a href="tel:+17575810004" class="foot-email">(757) 581-0004</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&#169; 2026 Quality Silkscreens. All Rights Reserved.</p>
+      <a id="footEmail2" href="#">Qualitysilkscreens @ gmail.com</a>
+    </div>
+  </footer>
 
-<!-- ━━ FOOTER ━━ -->
-<footer>
-  <a href="#home" class="footer-brand">Quality Silkscreens</a>
-  <nav class="footer-nav">
-    <a href="#services">Services</a>
-    <a href="#quote">Free Quote</a>
-    <a href="#shop">Shop</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-  </nav>
-  <div class="footer-right">
-    <a href="mailto:qualitysilkscreens@gmail.com">qualitysilkscreens@gmail.com</a><br/>
-    <a href="tel:+17575810004">(757) 581-0004</a><br/>
-    © 2025 Quality Silkscreens. All Rights Reserved.
-  </div>
-</footer>
-
-<script>
-  /* ── SMOOTH SCROLL — all internal anchor links, offset for fixed nav ── */
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      const id = this.getAttribute('href');
-      if (id === '#' || id === '#home') {
-        e.preventDefault();
-        window.scrollTo({ top:0, behavior:'smooth' });
-        return;
-      }
-      const target = document.querySelector(id);
-      if (!target) return;
-      e.preventDefault();
-      const navH = document.getElementById('mainNav').offsetHeight;
-      const top  = target.getBoundingClientRect().top + window.scrollY - navH;
-      window.scrollTo({ top, behavior:'smooth' });
+  <script>
+    var em = 'Qualitysilkscreens' + '@' + 'gmail.com';
+    var sub = encodeURIComponent('Free Quote Request - Quality Silkscreens');
+    var ml = 'mailto:' + em + '?subject=' + sub;
+    ['emailBtn','emailBtn2'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el){ el.href = ml; }
     });
-  });
-
-  /* ── SCROLL CUE ── */
-  document.getElementById('scrollCue').addEventListener('click', () => {
-    const navH = document.getElementById('mainNav').offsetHeight;
-    const top  = document.getElementById('ticker').getBoundingClientRect().top + window.scrollY - navH;
-    window.scrollTo({ top, behavior:'smooth' });
-  });
-
-  /* ── HERO PARALLAX ── */
-  const heroBg = document.getElementById('heroBg');
-  const hero   = document.getElementById('home');
-  hero.addEventListener('mousemove', e => {
-    if (window.innerWidth < 650) return;
-    const r  = hero.getBoundingClientRect();
-    const dx = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
-    const dy = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
-    heroBg.style.transform = `translate(${dx*12}px,${dy*8}px) scale(1.07)`;
-  });
-  hero.addEventListener('mouseleave', () => {
-    heroBg.style.transform = 'translate(0,0) scale(1.07)';
-  });
-
-  /* ── SCROLL: parallax + reveal ── */
-  function onScroll() {
-    const y = window.scrollY;
-    if (!hero.matches(':hover'))
-      heroBg.style.transform = `translateY(${y * 0.22}px) scale(1.07)`;
-    document.querySelectorAll('.reveal:not(.on)').forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight - 60)
-        el.classList.add('on');
+    ['footEmail','footEmail2'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el){ el.href = 'mailto:' + em; el.textContent = em; }
     });
-  }
-  window.addEventListener('scroll', onScroll, { passive:true });
+    var frm = document.getElementById('quoteForm');
+    if(frm){ frm.action = 'https://formsubmit.co/' + em; }
 
-  /* ── REVEAL on load ── */
-  (function initReveal() {
-    document.querySelectorAll('.reveal').forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight)
-        el.classList.add('on');
-    });
-  })();
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.reveal').forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight)
-        el.classList.add('on');
-    });
-  });
+    var nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 50); }, {passive:true});
 
-  /* ── QUOTE FORM radio toggle ── */
-  document.querySelectorAll('#prefOptions label').forEach(label => {
-    label.addEventListener('click', () => {
-      document.querySelectorAll('#prefOptions label').forEach(l => l.classList.remove('active'));
-      label.classList.add('active');
+    var heroBg = document.getElementById('heroBg');
+    var probe = new Image();
+    probe.onload  = function(){ heroBg.style.backgroundImage = "url('hero-bg.jpg')"; };
+    probe.onerror = function(){ heroBg.classList.add('no-image'); };
+    probe.src = 'hero-bg.jpg';
+
+    var burger = document.getElementById('hamburger');
+    var mmenu  = document.getElementById('mobileMenu');
+    function openMenu(){  mmenu.classList.add('open');    burger.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+    function closeMenu(){ mmenu.classList.remove('open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    burger.addEventListener('click', function(){ mmenu.classList.contains('open') ? closeMenu() : openMenu(); });
+
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, {threshold:0, rootMargin:'0px 0px -20px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+
+    var lightbox = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lbImg');
+    var imgs = [], lbIdx = 0;
+    function initGallery(){
+      imgs = Array.from(document.querySelectorAll('#workGallery .gallery-item img'));
+      imgs.forEach(function(img, i){ img.closest('.gallery-item').addEventListener('click', function(){ openLb(i); }); });
+    }
+    function openLb(i){  lbIdx=i; lbImg.src=imgs[i].src; lbImg.alt=imgs[i].alt; lightbox.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeLb(){  lightbox.classList.remove('open'); document.body.style.overflow=''; }
+    function stepLb(d){  lbIdx=(lbIdx+d+imgs.length)%imgs.length; lbImg.src=imgs[lbIdx].src; lbImg.alt=imgs[lbIdx].alt; }
+    initGallery();
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    document.getElementById('lbPrev').addEventListener('click', function(){ stepLb(-1); });
+    document.getElementById('lbNext').addEventListener('click', function(){ stepLb(1); });
+    lightbox.addEventListener('click', function(e){ if(e.target===lightbox) closeLb(); });
+    document.addEventListener('keydown', function(e){
+      if(lightbox.classList.contains('open')){
+        if(e.key==='ArrowLeft') stepLb(-1);
+        else if(e.key==='ArrowRight') stepLb(1);
+        else if(e.key==='Escape') closeLb();
+      } else if(e.key==='Escape') closeMenu();
     });
-  });
-</script>
+
+    var form   = document.getElementById('quoteForm');
+    var formOk = document.getElementById('formOk');
+    form.addEventListener('submit', function(e){
+      var ok = true;
+      form.querySelectorAll('[required]').forEach(function(f){
+        f.style.borderColor = '';
+        if(!f.value.trim()){ f.style.borderColor = '#b33'; ok = false; }
+      });
+      if(!ok){ e.preventDefault(); var first = form.querySelector('[style*="b33"]'); if(first) first.focus(); }
+    });
+    if(new URLSearchParams(location.search).get('sent')==='1'){
+      form.style.display='none'; formOk.style.display='block';
+    }
+  </script>
 </body>
 </html>
