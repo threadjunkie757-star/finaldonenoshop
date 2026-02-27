@@ -289,13 +289,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <!-- Replace the placeholder below with your image:
-             <img src="hero-photo.jpg" alt="Custom apparel by Quality Silkscreens"/> -->
-        <div class="hero-image-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Your photo here</span>
-          <span style="font-size:.65rem;opacity:.6;">Replace with &lt;img src="hero-photo.jpg"&gt;</span>
-        </div>
+        <img src="hero-photo.png" alt="Custom apparel by Quality Silkscreens" onerror="this.src='hero-photo.jpg'"/>
       </div>
     </div>
   </section>
@@ -523,18 +517,18 @@
       <div class="foot-col">
         <h4>Contact</h4>
         <ul>
-          <li><a id="footEmail" href="javascript:void(0)" class="foot-email">quote@qualitysilkscreens.com</a></li>
+          <li><a id="footEmail" href="javascript:void(0)" class="foot-email"><span class="__cf_email__" data-cfemail="e495918b9081a4959185888d909d978d888f97879681818a97ca878b89">[email&#160;protected]</span></a></li>
           <li><a href="tel:+17575810004" class="foot-email">(757) 581-0004</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
       <p>&#169; 2026 Quality Silkscreens. All Rights Reserved.</p>
-      <a id="footEmail2" href="javascript:void(0)">quote@qualitysilkscreens.com</a>
+      <a id="footEmail2" href="javascript:void(0)"><span class="__cf_email__" data-cfemail="ee9f9b819a8bae9f9b8f82879a979d8782859d8d9c8b8b809dc08d8183">[email&#160;protected]</span></a>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Money easter egg — animates every 30 seconds
     var egg = document.getElementById('moneyEgg');
     function triggerEgg(){
@@ -611,13 +605,4 @@
       var ok = true;
       form.querySelectorAll('[required]').forEach(function(f){
         f.style.borderColor = '';
-        if(!f.value.trim()){ f.style.borderColor = '#b33'; ok = false; }
-      });
-      if(!ok){ e.preventDefault(); var first = form.querySelector('[style*="b33"]'); if(first) first.focus(); }
-    });
-    if(new URLSearchParams(location.search).get('sent')==='1'){
-      form.style.display='none'; formOk.style.display='block';
-    }
-  </script>
-</body>
-</html>
+        if(!f.value.trim()){ f.style.borderColor = '
