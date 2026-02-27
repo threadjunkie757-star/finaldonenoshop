@@ -605,4 +605,13 @@
       var ok = true;
       form.querySelectorAll('[required]').forEach(function(f){
         f.style.borderColor = '';
-        if(!f.value.trim()){ f.style.borderColor = '
+        if(!f.value.trim()){ f.style.borderColor = '#b33'; ok = false; }
+      });
+      if(!ok){ e.preventDefault(); var first = form.querySelector('[style*="b33"]'); if(first) first.focus(); }
+    });
+    if(new URLSearchParams(location.search).get('sent')==='1'){
+      form.style.display='none'; formOk.style.display='block';
+    }
+  </script>
+</body>
+</html>
