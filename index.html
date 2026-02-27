@@ -33,6 +33,7 @@
     .money-egg{display:inline-block;margin-left:.2em;font-size:.85em;background:var(--gold-metal);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:default;vertical-align:baseline;line-height:1;position:relative;top:.05em;}
 
 
+    @keyframes shimmer{0%{left:-120%}100%{left:120%}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
@@ -50,8 +51,6 @@
     nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(15,14,12,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--gold-border);transition:background .3s,box-shadow .3s;}
     nav.scrolled{background:rgba(15,14,12,.99);box-shadow:0 2px 24px rgba(0,0,0,.5);}
     .logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;}
-    .logo-svg{width:42px;height:42px;flex-shrink:0;transition:filter .3s,transform .3s;}
-    .logo:hover .logo-svg{filter:drop-shadow(0 0 8px rgba(232,192,96,.8));transform:rotate(5deg) scale(1.08);}
     .logo-mark{width:36px;height:36px;flex-shrink:0;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;color:var(--gold);transition:background .2s,color .2s;}
     .logo:hover .logo-mark{background:var(--gold);color:#fff;}
     .logo-text{font-size:.74rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.17em;line-height:1.2;}
@@ -96,12 +95,6 @@
     #home h1 em{font-style:italic;color:var(--gold-light);}
     .hero-sub{font-size:clamp(1rem,3vw,1.35rem);color:rgba(255,255,255,.65);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:clamp(2rem,5vw,3rem);opacity:0;animation:fadeUp .7s .45s forwards;}
     .hero-btns{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;opacity:0;animation:fadeUp .7s .6s forwards;}
-    .hero-stats{display:flex;flex-wrap:wrap;gap:0;margin-top:clamp(2.5rem,6vw,4rem);border-top:1px solid rgba(200,144,42,.22);padding-top:clamp(1.2rem,3vw,2rem);opacity:0;animation:fadeUp .7s .75s forwards;}
-    .hero-stat{flex:0 0 auto;padding-right:clamp(1rem,3vw,2rem);margin-right:clamp(1rem,3vw,2rem);margin-bottom:.75rem;border-right:1px solid rgba(200,144,42,.22);}
-    .hero-stat:last-child{border-right:none;}
-    .stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;color:var(--gold-light);line-height:1;display:block;}
-    .stat-lbl{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);margin-top:.25rem;display:block;}
-
     /* MARQUEE */
     .marquee-bar{background:var(--gold);overflow:hidden;padding:.7rem 0;white-space:nowrap;}
     .marquee-track{display:inline-flex;animation:marquee 28s linear infinite;}
@@ -136,6 +129,7 @@
     /* SERVICES */
     #services{background:var(--dark);padding:clamp(4rem,10vw,7rem) var(--pad);}
     .svc-header{max-width:1100px;margin:0 auto;margin-bottom:clamp(2.5rem,5vw,4rem);display:flex;flex-direction:column;gap:.9rem;}
+    .svc-sub{color:var(--muted);font-size:.9rem;line-height:1.7;max-width:480px;margin-top:.5rem;}
     .svc-right{display:flex;flex-direction:column;gap:1.2rem;max-width:360px;}
     .svc-specialties{border-top:1px solid var(--gold-border);padding-top:1.2rem;}
     .svc-spec-label{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);margin-bottom:.8rem;}
@@ -233,11 +227,14 @@
     .foot-bottom a{color:var(--gold);font-size:.78rem;font-weight:600;text-decoration:none;}
     .foot-bottom a:hover{color:var(--gold-light);}
 
+    /* Offset anchor scroll targets so fixed nav doesn't cover content */
+    #home,#about,#services,#quote{scroll-margin-top:var(--nav-h);}
+
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
     .reveal.in{opacity:1;transform:none;}
     .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
-    @media(prefers-reduced-motion:reduce){*,.reveal,#home h1,.hero-tag,.hero-sub,.hero-btns,.hero-stats{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;}}
+    @media(prefers-reduced-motion:reduce){*,.reveal,#home h1,.hero-tag,.hero-sub,.hero-btns{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;}}
   </style>
 </head>
 <body>
@@ -278,7 +275,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           Call for Free Quote
         </a>
-        <a id="emailBtn" href="#" class="btn-gold">
+        <a id="emailBtn" href="javascript:void(0)" class="btn-gold">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
           Email for Free Quote
         </a>
@@ -389,7 +386,7 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             (757) 581-0004
           </a>
-          <a id="emailBtn2" href="#" class="btn-gold">
+          <a id="emailBtn2" href="javascript:void(0)" class="btn-gold">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
             Email Us
           </a>
@@ -511,14 +508,14 @@
       <div class="foot-col">
         <h4>Contact</h4>
         <ul>
-          <li><a id="footEmail" href="#" class="foot-email">Qualitysilkscreens @ gmail.com</a></li>
+          <li><a id="footEmail" href="javascript:void(0)" class="foot-email">Qualitysilkscreens @ gmail.com</a></li>
           <li><a href="tel:+17575810004" class="foot-email">(757) 581-0004</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
       <p>&#169; 2026 Quality Silkscreens. All Rights Reserved.</p>
-      <a id="footEmail2" href="#">Qualitysilkscreens @ gmail.com</a>
+      <a id="footEmail2" href="javascript:void(0)">Qualitysilkscreens @ gmail.com</a>
     </div>
   </footer>
 
@@ -531,6 +528,16 @@
       egg.style.animation='moneyPulse 1.4s ease-in-out 1';
     }
     setTimeout(function(){ triggerEgg(); setInterval(triggerEgg, 15000); }, 4000);
+
+    // Smooth scroll for all anchor links — prevents any new window/tab behaviour
+    document.querySelectorAll('a[href^="#"]').forEach(function(link){
+      link.addEventListener('click', function(e){
+        var href = this.getAttribute('href');
+        if(href === '#') return;
+        var target = document.querySelector(href);
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+      });
+    });
 
     var em = 'Qualitysilkscreens' + '@' + 'gmail.com';
     var sub = encodeURIComponent('Free Quote Request - Quality Silkscreens');
