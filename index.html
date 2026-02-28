@@ -230,18 +230,14 @@
     .feat span{font-size:.82rem;font-weight:600;color:var(--text);}
 
     /* ── GALLERY ── */
-    .work-gallery{columns:2;column-gap:6px;}
-    @media(min-width:600px){.work-gallery{columns:3;}}
-    .gallery-item{break-inside:avoid;margin-bottom:6px;overflow:hidden;position:relative;cursor:pointer;background:var(--dark3);}
-    .gallery-item img{width:100%;height:auto;display:block;transition:transform .4s ease;object-fit:cover;}
+    .work-gallery{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+    @media(min-width:600px){.work-gallery{grid-template-columns:repeat(3,1fr);}}
+    @media(min-width:900px){.work-gallery{grid-template-columns:repeat(4,1fr);}}
+    .gallery-item{overflow:hidden;position:relative;cursor:pointer;background:var(--dark3);aspect-ratio:1/1;}
+    .gallery-item img{width:100%;height:100%;display:block;transition:transform .4s ease;object-fit:cover;object-position:center;}
     .gallery-item:hover img{transform:scale(1.05);}
     .gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(200,144,42,.3),transparent 60%);opacity:0;transition:opacity .3s;}
     .gallery-item:hover::after{opacity:1;}
-    /* Photo placeholders — intentional styled tiles */
-    .gph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(135deg,var(--dark2),var(--dark3));color:rgba(255,255,255,.18);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;border:1px dashed rgba(200,144,42,.2);}
-    .gph.tall{aspect-ratio:3/4;}.gph.wide{aspect-ratio:4/3;}.gph.sq{aspect-ratio:1/1;}
-    .gph svg{opacity:.25;}
-    .gph span{font-size:.58rem;color:rgba(200,144,42,.35);letter-spacing:.1em;}
 
     /* ── QUOTE ── */
     #quote{background:var(--cream2);padding:clamp(4rem,10vw,7rem) var(--pad);scroll-margin-top:var(--nav-h);}
@@ -574,54 +570,18 @@
         </div>
       </div>
       <div class="work-gallery reveal d1" id="workGallery" aria-label="Our work">
-        <div class="gallery-item">
-          <div class="gph tall">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add Photo</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gph wide">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add Photo</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gph sq">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add Photo</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gph wide">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add Photo</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gph tall">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add Photo</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gph sq">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add Photo</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gph wide">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add Photo</span>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <div class="gph tall">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <span>Add Photo</span>
-          </div>
-        </div>
+        <div class="gallery-item"><img src="gallery-1.jpg" alt="Custom branded shirt, hat and tote bag by Quality Silkscreens" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-2.jpg" alt="Custom polo, tee, hat and apron by Quality Silkscreens" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-3.jpg" alt="Custom bags, backpack, tees and hat collection" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-4.jpg" alt="Custom embroidered jackets, polos, hats and branded bags" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-5.jpg" alt="Custom embroidered hats and beanies collection" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-6.jpg" alt="Full custom apparel lineup — jackets, shirts and accessories" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-7.jpg" alt="Custom polo, tote bag and drawstring bag by Quality Silkscreens" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-8.jpg" alt="Custom branded bags and accessories collection" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-9.jpg" alt="Custom embroidered polo shirt on work bench" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-10.jpg" alt="Custom embroidered button-down shirt" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-11.jpg" alt="Full custom uniform and apparel collection" loading="lazy"/></div>
+        <div class="gallery-item"><img src="gallery-12.jpg" alt="Custom printed dress shirt, polo and long sleeve tee" loading="lazy"/></div>
       </div>
     </div>
   </section>
