@@ -9,6 +9,7 @@
   <meta property="og:description" content="20 years delivering vibrant custom apparel. 1,000+ items delivered in 2026. Hundreds of businesses served. Fast quotes."/>
   <meta property="og:type" content="website"/>
   <link rel="canonical" href="https://qualitysilkscreens.com/"/>
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root{
@@ -29,25 +30,40 @@
     ::-webkit-scrollbar-track{background:var(--dark);}
     ::-webkit-scrollbar-thumb{background:var(--gold);}
 
-    @keyframes moneyPulse{0%,100%{transform:scale(1) rotate(0deg);filter:drop-shadow(0 0 6px rgba(200,144,42,.4));}25%{transform:scale(1.35) rotate(-12deg);filter:drop-shadow(0 0 18px rgba(232,192,96,.9));}50%{transform:scale(1.4) rotate(8deg);filter:drop-shadow(0 0 22px rgba(253,240,176,1));}75%{transform:scale(1.3) rotate(-6deg);filter:drop-shadow(0 0 14px rgba(232,192,96,.8));}}
+    @keyframes moneyPulse{
+      0%,100%{transform:scale(1) rotate(0deg);filter:drop-shadow(0 0 6px rgba(200,144,42,.4));}
+      25%{transform:scale(1.35) rotate(-12deg);filter:drop-shadow(0 0 18px rgba(232,192,96,.9));}
+      50%{transform:scale(1.4) rotate(8deg);filter:drop-shadow(0 0 22px rgba(253,240,176,1));}
+      75%{transform:scale(1.3) rotate(-6deg);filter:drop-shadow(0 0 14px rgba(232,192,96,.8));}
+    }
     .money-egg{display:inline-block;margin-left:.2em;font-size:.85em;background:var(--gold-metal);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:default;vertical-align:baseline;line-height:1;position:relative;top:.05em;}
-
-
     @keyframes shimmer{0%{left:-120%}100%{left:120%}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @keyframes glistenSweep{0%,100%{background-position:200% center;}50%{background-position:-200% center;}}
 
-    .btn-outline{
-      display:inline-flex;align-items:center;gap:.5rem;height:52px;padding:0 1.8rem;
-      background:transparent;border:1.5px solid var(--gold);color:rgba(255,255,255,.8);
-      font-family:'Syne',sans-serif;font-size:.8rem;font-weight:600;
-      text-transform:uppercase;letter-spacing:.13em;text-decoration:none;
-      cursor:pointer;transition:background .2s,color .2s,transform .2s;
+    /* ── BUTTONS ── */
+    .btn-gold{
+      position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      height:52px;padding:0 2rem;
+      background:linear-gradient(90deg,var(--g1) 0%,var(--g2) 15%,var(--g3) 30%,var(--g4) 45%,#fff9d6 50%,var(--g4) 55%,var(--g3) 70%,var(--g2) 85%,var(--g1) 100%);
+      background-size:400% auto;color:#1c1000;
+      font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.13em;
+      text-decoration:none;border:none;cursor:pointer;
+      transition:transform .2s,box-shadow .2s;
       clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+      animation:glistenSweep 55s ease-in-out infinite;
     }
+    .btn-gold::after{content:'';position:absolute;top:-20%;left:-120%;width:30%;height:140%;background:linear-gradient(105deg,transparent 10%,rgba(255,255,220,.2) 50%,transparent 90%);transform:skewX(-25deg);animation:shimmer 55s ease-in-out infinite;animation-delay:8s;}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,144,42,.4);}
+    .btn-gold:active{transform:translateY(0);box-shadow:none;}
+
+    .btn-or{display:inline-flex;align-items:center;color:var(--gold);font-size:.65rem;font-weight:700;text-transform:lowercase;letter-spacing:.08em;white-space:nowrap;flex-shrink:0;opacity:.6;}
+    .btn-or span{display:none;}
+    .btn-outline{display:inline-flex;align-items:center;gap:.5rem;height:52px;padding:0 1.8rem;background:transparent;border:1.5px solid var(--gold);color:rgba(255,255,255,.8);font-family:'Syne',sans-serif;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.13em;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,transform .2s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));}
     .btn-outline:hover{background:var(--gold-dim);color:#fff;transform:translateY(-2px);}
 
-    /* NAV */
+    /* ── NAV ── */
     nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);background:rgba(15,14,12,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--gold-border);transition:background .3s,box-shadow .3s;}
     nav.scrolled{background:rgba(15,14,12,.99);box-shadow:0 2px 24px rgba(0,0,0,.5);}
     .logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;}
@@ -55,7 +71,7 @@
     .logo:hover .logo-mark{background:var(--gold);color:#fff;}
     .logo-text{font-size:.74rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.17em;line-height:1.2;}
     .nav-links{display:none;}
-    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;min-height:44px;}
+    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;min-height:44px;align-items:center;justify-content:center;}
     .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:1px;transition:transform .3s,opacity .3s;}
     .hamburger[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
     .hamburger[aria-expanded="true"] span:nth-child(2){opacity:0;}
@@ -65,10 +81,11 @@
     .mobile-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:clamp(1.4rem,5vw,2rem);font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:1.1rem 2rem;width:100%;text-align:center;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s;}
     .mobile-menu a:last-child{border-bottom:none;color:var(--gold);}
     .mobile-menu a:hover{color:var(--gold);}
-    @media(min-width:860px){
+
+    @media(min-width:640px){
       .hamburger{display:none;}
-      .nav-links{display:flex;gap:0;list-style:none;align-items:center;flex:1;justify-content:space-evenly;margin:0 1rem;}
-      .nav-links a{text-decoration:none;color:rgba(255,255,255,.62);font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.13em;position:relative;transition:color .2s;}
+      .nav-links{display:flex;gap:0;list-style:none;align-items:center;flex:1;justify-content:space-evenly;margin:0 2rem;}
+      .nav-links a{text-decoration:none;color:rgba(255,255,255,.62);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;position:relative;transition:color .2s;padding:.25rem .6rem;white-space:nowrap;}
       .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;}
       .nav-links a:hover{color:#fff;}
       .nav-links a:hover::after{transform:scaleX(1);}
@@ -77,36 +94,29 @@
       .nav-links li:last-child a::after{display:none;}
     }
 
-    /* HERO */
-    #home{min-height:82vh;position:relative;display:flex;flex-direction:column;justify-content:stretch;overflow:hidden;}
+    /* ── HERO ── */
+    #home{min-height:auto;position:relative;display:flex;flex-direction:column;justify-content:stretch;overflow:hidden;scroll-margin-top:0;}
     .hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#201e18 0%,#0f0e0c 100%);}
     .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(8,7,5,.98) 40%,rgba(8,7,5,.3) 100%);}
     .hero-grid{position:absolute;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(200,144,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,144,42,.04) 1px,transparent 1px);background-size:64px 64px;}
-    .hero-content{position:relative;z-index:2;padding:calc(var(--nav-h) + clamp(2rem,5vw,4rem)) var(--pad) clamp(2rem,5vw,4rem);display:flex;align-items:center;gap:clamp(2rem,5vw,4rem);min-height:82vh;}
+    .hero-content{position:relative;z-index:2;padding:calc(var(--nav-h) + 1.5rem) var(--pad) 2rem;display:flex;align-items:center;gap:clamp(2rem,5vw,4rem);}
     .hero-left{flex:0 0 auto;max-width:560px;width:100%;}
     .hero-image{flex:1;position:relative;display:none;align-items:center;justify-content:center;}
     @media(min-width:860px){.hero-image{display:flex;}}
     .hero-image img{width:100%;max-height:60vh;object-fit:cover;border:1px solid var(--gold-border);box-shadow:0 0 60px rgba(200,144,42,.15);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));}
-    .hero-image-placeholder{width:100%;aspect-ratio:4/3;border:1px dashed var(--gold-border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));background:rgba(200,144,42,.03);}
-    .hero-image-placeholder svg{opacity:.3;}
-    @keyframes glistenSweep{0%,100%{background-position:200% center;}50%{background-position:-200% center;}}
     .hero-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;margin-bottom:clamp(1rem,3vw,1.5rem);opacity:0;background:linear-gradient(90deg,var(--g1) 0%,var(--g2) 15%,var(--g3) 30%,var(--g4) 45%,#fff9d6 50%,var(--g4) 55%,var(--g3) 70%,var(--g2) 85%,var(--g1) 100%);background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp .7s .15s forwards,glistenSweep 12s ease-in-out infinite;animation-delay:.15s,1.5s;}
-    .btn-gold{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;height:52px;padding:0 2rem;background:linear-gradient(90deg,var(--g1) 0%,var(--g2) 15%,var(--g3) 30%,var(--g4) 45%,#fff9d6 50%,var(--g4) 55%,var(--g3) 70%,var(--g2) 85%,var(--g1) 100%);background-size:400% auto;color:#1c1000;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.13em;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));animation:glistenSweep 55s ease-in-out infinite;}
-    .btn-gold::after{content:'';position:absolute;top:-20%;left:-120%;width:30%;height:140%;background:linear-gradient(105deg,transparent 10%,rgba(255,255,220,.2) 50%,transparent 90%);transform:skewX(-25deg);animation:shimmer 55s ease-in-out infinite;animation-delay:8s;}
-    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,144,42,.4);}
-    .btn-gold:active{transform:translateY(0);box-shadow:none;}
     .hero-tag::before{content:'';width:24px;height:1px;background:var(--gold);flex-shrink:0;display:inline-block;}
     #home h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.9rem,11vw,5.8rem);font-weight:600;color:#fff;line-height:1.02;letter-spacing:-.01em;margin-bottom:clamp(.5rem,2vw,1rem);opacity:0;animation:fadeUp .8s .3s forwards;}
     #home h1 em{font-style:italic;color:var(--gold-light);}
-    .hero-sub{font-size:clamp(1rem,3vw,1.35rem);color:rgba(255,255,255,.65);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:clamp(2rem,5vw,3rem);opacity:0;animation:fadeUp .7s .45s forwards;}
-    .hero-btns{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;opacity:0;animation:fadeUp .7s .6s forwards;}
-    /* MARQUEE */
+    .hero-sub{font-size:clamp(1rem,3vw,1.35rem);color:rgba(255,255,255,.65);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:.8rem;opacity:0;animation:fadeUp .7s .45s forwards;}
+    .hero-micro{font-size:.75rem;color:rgba(255,255,255,.7);letter-spacing:.06em;line-height:1.6;margin-bottom:clamp(2rem,5vw,3rem);opacity:0;animation:fadeUp .7s .52s forwards;}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:.6rem;align-items:stretch;opacity:0;animation:fadeUp .7s .6s forwards;}.hero-btns .btn-gold,.hero-btns .btn-outline{flex:1;min-width:0;justify-content:center;text-align:center;font-size:.72rem;padding:0 1rem;}
+
+    /* ── MARQUEE / TRUST ── */
     .marquee-bar{background:var(--gold);overflow:hidden;padding:.7rem 0;white-space:nowrap;}
     .marquee-track{display:inline-flex;animation:marquee 28s linear infinite;}
     .marquee-item{display:inline-flex;align-items:center;gap:1.2rem;padding:0 1.6rem;font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:#1c1000;}
     .marquee-dot{font-size:.4rem;color:rgba(0,0,0,.35);}
-
-    /* TRUST BAR */
     .trust-bar{background:var(--dark);border-bottom:1px solid var(--gold-border);padding:.8rem var(--pad);}
     .trust-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
     .trust-inner::-webkit-scrollbar{display:none;}
@@ -115,7 +125,7 @@
     .trust-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:.2rem;display:block;}
     .trust-label{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.4);line-height:1.4;white-space:nowrap;}
 
-    /* SHARED */
+    /* ── SHARED ── */
     .eyebrow{display:inline-flex;align-items:center;gap:.7rem;color:var(--gold);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.22em;margin-bottom:.9rem;}
     .eyebrow::after{content:'';flex-shrink:0;width:30px;height:1px;background:var(--gold);}
     .section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3.4rem);font-weight:600;line-height:1.08;}
@@ -123,16 +133,16 @@
     .section-h.light{color:#fff;}.section-h.light em{color:var(--gold-light);}
     .section-h.dark{color:var(--dark);}
 
-    /* INTRO */
-    .intro-band{background:var(--cream);padding:clamp(4rem,10vw,7rem) var(--pad);}
+    /* ── INTRO ── */
+    .intro-band{background:var(--cream);padding:clamp(1.5rem,4vw,3rem) var(--pad);}
     .intro-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem;}
-    .intro-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,8vw,4.4rem);font-weight:600;color:var(--dark);line-height:1.04;}
+    .intro-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:600;color:var(--dark);line-height:1.04;}
     .intro-inner h2 em{font-style:italic;color:var(--gold);}
-    .intro-body{font-size:clamp(.9rem,2.5vw,1.05rem);line-height:1.85;color:var(--muted);}
+    .intro-body{font-size:clamp(.85rem,2vw,.95rem);line-height:1.75;color:var(--muted);}
     @media(min-width:700px){.intro-inner{flex-direction:row;align-items:center;gap:clamp(3rem,7vw,6rem);}.intro-inner h2,.intro-body{flex:1;}}
 
-    /* SERVICES */
-    #services{background:var(--dark);padding:clamp(4rem,10vw,7rem) var(--pad);}
+    /* ── SERVICES ── */
+    #services{background:var(--dark);padding:clamp(4rem,10vw,7rem) var(--pad);scroll-margin-top:var(--nav-h);}
     .svc-header{max-width:1100px;margin:0 auto;margin-bottom:clamp(2.5rem,5vw,4rem);display:flex;flex-direction:column;gap:.9rem;}
     .svc-sub{color:var(--muted);font-size:.9rem;line-height:1.7;max-width:480px;margin-top:.5rem;}
     .svc-right{display:flex;flex-direction:column;gap:1.2rem;max-width:360px;}
@@ -145,17 +155,50 @@
     .svc-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1px;background:var(--gold-border);}
     @media(min-width:560px){.svc-grid{grid-template-columns:1fr 1fr;}}
     @media(min-width:1020px){.svc-grid{grid-template-columns:repeat(4,1fr);}}
-    .svc-card{background:var(--dark2);padding:clamp(2rem,4vw,2.8rem) clamp(1.5rem,3vw,2.2rem);position:relative;overflow:hidden;transition:background .3s;}
-    .svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-metal);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
-    .svc-card:hover{background:var(--dark3);}
+    .svc-card{background:var(--dark2);position:relative;overflow:hidden;transition:background .3s;display:flex;flex-direction:column;}
+    .svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-metal);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;z-index:2;}
     .svc-card:hover::before{transform:scaleX(1);}
-    .svc-icon{width:50px;height:50px;border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.4rem;transition:border-color .3s,background .3s;}
-    .svc-card:hover .svc-icon{border-color:var(--gold);background:var(--gold-dim);}
+    .svc-card:hover{background:var(--dark3);}
+    .svc-card-img{width:100%;height:280px;overflow:hidden;position:relative;background:var(--dark3);flex-shrink:0;}
+    .svc-card-img img{width:100%;height:280px;object-fit:cover;object-position:center center;display:block;transition:transform .5s ease;}
+    .svc-card:hover .svc-card-img img{transform:scale(1.04);}
+    .svc-card-body{padding:1.4rem 1.6rem 1.8rem;flex:1;}
     .svc-card h3{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.7rem;}
     .svc-card p{font-size:.87rem;color:var(--muted);line-height:1.7;}
 
-    /* ABOUT */
-    #about{background:var(--cream);padding:clamp(4rem,10vw,7rem) var(--pad);}
+    .svc-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;gap:.8rem;flex-wrap:wrap;}
+    .svc-quote-btn{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);text-decoration:none;border:1px solid var(--gold-border);padding:.4rem .9rem;transition:background .2s,color .2s,border-color .2s;white-space:nowrap;}
+    .svc-quote-btn:hover{background:var(--gold);color:#1c1000;border-color:var(--gold);}
+    .svc-price{display:inline-block;margin-top:1rem;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--gold-light);}
+    .svc-price span{font-size:.68rem;font-weight:700;font-family:'Syne',sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-left:.3rem;vertical-align:middle;}
+
+    /* ── BRANDS ── */
+    #brands{background:var(--cream);padding:clamp(4rem,10vw,7rem) var(--pad);scroll-margin-top:var(--nav-h);}
+    .brands-wrap,.clients-wrap{max-width:1100px;margin:0 auto;}
+    .section-label-row{margin-bottom:2.5rem;}
+    .section-desc{color:var(--muted);font-size:.92rem;line-height:1.7;max-width:540px;margin-top:.6rem;}
+    .brand-pill-grid{display:flex;flex-wrap:wrap;gap:.5rem;}
+    .brand-pill{font-size:.76rem;font-weight:600;color:var(--text);background:#fff;border:1px solid #d8d2c8;padding:.45rem 1rem;letter-spacing:.04em;white-space:nowrap;transition:border-color .2s,color .2s,background .2s;}
+    .brand-pill:hover{border-color:var(--gold);color:var(--gold);background:rgba(200,144,42,.04);}
+    /* ── CLIENT PILLS ── */
+    .client-pill-grid{display:flex;flex-wrap:wrap;gap:.5rem;}
+    .client-pill{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.75);background:rgba(255,255,255,.05);border:1px solid var(--gold-border);padding:.5rem 1.1rem;letter-spacing:.04em;white-space:nowrap;transition:border-color .2s,color .2s,background .2s;}
+    .client-pill:hover{border-color:var(--gold);color:var(--gold-light);background:rgba(200,144,42,.08);}
+
+
+    /* ── CLIENTS ── */
+    #clients{background:var(--dark);padding:clamp(4rem,10vw,7rem) var(--pad);scroll-margin-top:var(--nav-h);}
+    .client-groups{display:grid;grid-template-columns:1fr;gap:2.5rem;}
+    @media(min-width:600px){.client-groups{grid-template-columns:1fr 1fr;}}
+    @media(min-width:900px){.client-groups{grid-template-columns:repeat(3,1fr);}}
+    .client-group{border-top:2px solid var(--gold);padding-top:1.2rem;}
+    .client-group-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);margin-bottom:1rem;}
+    .client-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+    .client-list li{font-size:.9rem;color:rgba(255,255,255,.65);font-weight:500;padding-left:.9rem;position:relative;}
+    .client-list li::before{content:'';position:absolute;left:0;top:.55em;width:4px;height:4px;background:var(--gold);opacity:.5;}
+
+    /* ── ABOUT ── */
+    #about{background:var(--cream);padding:clamp(4rem,10vw,7rem) var(--pad);scroll-margin-top:var(--nav-h);}
     .about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,7vw,5rem);}
     @media(min-width:860px){.about-inner{grid-template-columns:1fr 1.4fr;align-items:start;}}
     .about-text .eyebrow{display:inline-flex;}
@@ -166,7 +209,7 @@
     .feat-dot{width:5px;height:5px;flex-shrink:0;background:var(--gold);}
     .feat span{font-size:.82rem;font-weight:600;color:var(--text);}
 
-    /* GALLERY */
+    /* ── GALLERY ── */
     .work-gallery{columns:2;column-gap:6px;}
     @media(min-width:600px){.work-gallery{columns:3;}}
     .gallery-item{break-inside:avoid;margin-bottom:6px;overflow:hidden;position:relative;cursor:pointer;background:var(--dark3);}
@@ -174,21 +217,14 @@
     .gallery-item:hover img{transform:scale(1.05);}
     .gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(200,144,42,.3),transparent 60%);opacity:0;transition:opacity .3s;}
     .gallery-item:hover::after{opacity:1;}
-    .gph{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--dark2),var(--dark3));color:var(--muted);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;}
+    /* Photo placeholders — intentional styled tiles */
+    .gph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(135deg,var(--dark2),var(--dark3));color:rgba(255,255,255,.18);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;border:1px dashed rgba(200,144,42,.2);}
     .gph.tall{aspect-ratio:3/4;}.gph.wide{aspect-ratio:4/3;}.gph.sq{aspect-ratio:1/1;}
+    .gph svg{opacity:.25;}
+    .gph span{font-size:.58rem;color:rgba(200,144,42,.35);letter-spacing:.1em;}
 
-    /* LIGHTBOX */
-    .lightbox{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.93);align-items:center;justify-content:center;padding:2rem;}
-    .lightbox.open{display:flex;}
-    .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border:1px solid var(--gold-border);}
-    .lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:rgba(255,255,255,.5);font-size:2rem;cursor:pointer;line-height:1;transition:color .2s;}
-    .lb-close:hover{color:var(--gold);}
-    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid var(--gold-border);color:rgba(255,255,255,.6);font-size:1.6rem;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
-    .lb-nav:hover{background:var(--gold-dim);color:var(--gold);}
-    .lb-prev{left:1rem;}.lb-next{right:1rem;}
-
-    /* QUOTE */
-    #quote{background:var(--cream2);padding:clamp(4rem,10vw,7rem) var(--pad);}
+    /* ── QUOTE ── */
+    #quote{background:var(--cream2);padding:clamp(4rem,10vw,7rem) var(--pad);scroll-margin-top:var(--nav-h);}
     .quote-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,7vw,5rem);}
     @media(min-width:860px){.quote-wrap{grid-template-columns:1fr 1.6fr;align-items:start;}}
     .q-left .section-h{color:var(--dark);margin-bottom:.9rem;}
@@ -204,18 +240,35 @@
     .qform input::placeholder,.qform textarea::placeholder{color:#b0a89e;}
     .qform textarea{min-height:120px;resize:vertical;}
     .sel-wrap{position:relative;}
-    .sel-wrap::after{content:'▾';position:absolute;right:1rem;top:50%;transform:translateY(-50%);color:var(--gold);pointer-events:none;}
+    .sel-wrap::after{content:'\25BE';position:absolute;right:1rem;top:50%;transform:translateY(-50%);color:var(--gold);pointer-events:none;}
     .form-row{display:grid;gap:1rem;grid-template-columns:1fr;}
     @media(min-width:480px){.form-row{grid-template-columns:1fr 1fr;}}
     .btn-submit{width:100%;height:54px;background:var(--dark);color:#fff;font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;border:none;cursor:pointer;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));transition:background .2s,transform .2s;position:relative;overflow:hidden;}
     .btn-submit:hover{background:var(--gold);transform:translateY(-2px);}
     .btn-submit::after{content:'';position:absolute;top:-20%;left:-120%;width:60%;height:140%;background:linear-gradient(105deg,transparent 20%,rgba(255,255,220,.4) 50%,transparent 80%);transform:skewX(-20deg);animation:shimmer 8s ease-in-out infinite;}
     .btn-submit:active{transform:translateY(0);}
+    .file-upload-label{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.2rem;border:1.5px dashed #c8c0b4;background:#faf7f2;cursor:pointer;transition:border-color .2s,background .2s;}
+    .file-upload-label:hover{border-color:var(--gold);background:#fdf5e6;}
+    .file-upload-label.has-file{border-color:var(--gold);border-style:solid;background:rgba(200,144,42,.05);}
+    .file-upload-icon{width:40px;height:40px;flex-shrink:0;border:1px solid #d2ccc0;display:flex;align-items:center;justify-content:center;color:var(--gold);}
+    .file-upload-text{display:flex;flex-direction:column;gap:.2rem;}
+    .file-upload-main{font-size:.85rem;font-weight:600;color:var(--text);}
+    .file-upload-sub{font-size:.72rem;color:var(--muted);}
     .form-ok{display:none;text-align:center;padding:2.5rem 1.5rem;border:1px solid var(--gold);background:rgba(200,144,42,.05);}
     .form-ok .ok-icon{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;margin:0 auto 1rem;}
     .form-ok p{color:var(--muted);font-size:.9rem;}
 
-    /* FOOTER */
+    /* ── LIGHTBOX ── */
+    .lightbox{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.93);align-items:center;justify-content:center;padding:2rem;}
+    .lightbox.open{display:flex;}
+    .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border:1px solid var(--gold-border);}
+    .lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:rgba(255,255,255,.5);font-size:2rem;cursor:pointer;line-height:1;transition:color .2s;}
+    .lb-close:hover{color:var(--gold);}
+    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid var(--gold-border);color:rgba(255,255,255,.6);font-size:1.6rem;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
+    .lb-nav:hover{background:var(--gold-dim);color:var(--gold);}
+    .lb-prev{left:1rem;}.lb-next{right:1rem;}
+
+    /* ── FOOTER ── */
     footer{background:var(--dark);border-top:1px solid rgba(200,144,42,.14);}
     .foot-inner{max-width:1100px;margin:0 auto;padding:clamp(3rem,7vw,5rem) var(--pad) clamp(1.5rem,4vw,2.5rem);display:grid;grid-template-columns:1fr;gap:2.5rem;}
     @media(min-width:580px){.foot-inner{grid-template-columns:1fr 1fr;}}
@@ -232,18 +285,20 @@
     .foot-bottom a{color:var(--gold);font-size:.78rem;font-weight:600;text-decoration:none;}
     .foot-bottom a:hover{color:var(--gold-light);}
 
-    /* Offset anchor scroll targets so fixed nav doesn't cover content */
-    #home,#about,#services,#quote{scroll-margin-top:var(--nav-h);}
-
-    /* REVEAL */
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease;}
+    /* ── SCROLL REVEAL ── */
+    .reveal{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease;}
+    .reveal.hidden{opacity:0;transform:translateY(24px);}
     .reveal.in{opacity:1;transform:none;}
     .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
-    @media(prefers-reduced-motion:reduce){*,.reveal,#home h1,.hero-tag,.hero-sub,.hero-btns{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;}}
+
+    @media(prefers-reduced-motion:reduce){
+      *,.reveal,#home h1,.hero-tag,.hero-sub,.hero-btns{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;}
+    }
   </style>
 </head>
 <body>
 
+  <!-- ── NAV: all 6 sections linked ── -->
   <nav id="mainNav">
     <a href="#home" class="logo" aria-label="Quality Silkscreens home">
       <div class="logo-mark" aria-hidden="true">QS</div>
@@ -253,6 +308,8 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Products</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#clients">Clients</a></li>
       <li><a href="#quote">Get a Quote</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open navigation">
@@ -260,14 +317,17 @@
     </button>
   </nav>
 
+  <!-- ── MOBILE MENU: all 6 sections ── -->
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation">
-    <a href="#home"     onclick="closeMenu()">Home</a>
-    <a href="#about"    onclick="closeMenu()">About</a>
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#about" onclick="closeMenu()">About</a>
     <a href="#services" onclick="closeMenu()">Products</a>
-    <a href="#quote"    onclick="closeMenu()">Get a Free Quote</a>
+    <a href="#brands" onclick="closeMenu()">Brands</a>
+    <a href="#clients" onclick="closeMenu()">Clients</a>
+    <a href="#quote" onclick="closeMenu()">Get a Free Quote</a>
   </div>
 
-  <!-- HERO -->
+  <!-- ── HERO ── -->
   <section id="home" aria-label="Hero">
     <div class="hero-bg" id="heroBg" role="presentation"></div>
     <div class="hero-grid" aria-hidden="true"></div>
@@ -276,16 +336,22 @@
         <div class="hero-tag" aria-hidden="true">Custom Apparel Provider</div>
         <h1>High Quality<br/><em>Low Cost</em><span class="money-egg" id="moneyEgg" aria-hidden="true">$</span></h1>
         <p class="hero-sub">Your design on fabric &#8212; done right, priced right, delivered fast.</p>
+        <p class="hero-micro">Top brands like Nike, Carhartt &amp; The North Face &#8212; trusted by local businesses, schools, and national corporations across Hampton Roads.</p>
         <div class="hero-btns">
           <a href="tel:+17575810004" class="btn-gold">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             Call for Free Quote
           </a>
+          <span class="btn-or"><span></span>or<span></span></span>
           <a id="emailBtn" href="javascript:void(0)" class="btn-gold">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
             Email for Free Quote
           </a>
-          <a href="#quote" class="btn-outline">Fill Out the Form</a>
+          <span class="btn-or"><span></span>or<span></span></span>
+          <a href="#quote" class="btn-gold">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Fill Form &amp; Upload Photo
+          </a>
         </div>
       </div>
       <div class="hero-image">
@@ -294,18 +360,18 @@
     </div>
   </section>
 
-  <!-- TRUST BAR -->
+  <!-- ── TRUST BAR ── -->
   <div class="trust-bar" aria-label="Why choose us">
     <div class="trust-inner">
       <div class="trust-item reveal"><span class="trust-num">20</span><span class="trust-label">Years in Business</span></div>
-      <div class="trust-item reveal d1"><span class="trust-num">1000+</span><span class="trust-label">Items Delivered in 2026</span></div>
+      <div class="trust-item reveal d1"><span class="trust-num">1,000+</span><span class="trust-label">Items Delivered in 2026</span></div>
       <div class="trust-item reveal d1"><span class="trust-num">100+</span><span class="trust-label">Businesses Served</span></div>
       <div class="trust-item reveal d2"><span class="trust-num">Free</span><span class="trust-label">Design Help</span></div>
       <div class="trust-item reveal d2"><span class="trust-num">Fast</span><span class="trust-label">Express Options Available</span></div>
     </div>
   </div>
 
-  <!-- MARQUEE -->
+  <!-- ── MARQUEE ── -->
   <div class="marquee-bar" aria-hidden="true">
     <div class="marquee-track">
       <span class="marquee-item">Custom Apparel <span class="marquee-dot">&#9670;</span></span>
@@ -329,7 +395,7 @@
     </div>
   </div>
 
-  <!-- INTRO -->
+  <!-- ── INTRO ── -->
   <div class="intro-band">
     <div class="intro-inner">
       <h2 class="reveal">Custom Apparel<br/><em>Done Right.</em></h2>
@@ -337,7 +403,7 @@
     </div>
   </div>
 
-  <!-- PRODUCTS -->
+  <!-- ── SERVICES ── -->
   <section id="services" aria-label="Our products">
     <div class="svc-header">
       <div>
@@ -354,36 +420,204 @@
             <span class="svc-spec-item">Heat Transfers</span>
             <span class="svc-spec-item">Direct-to-Garment</span>
             <span class="svc-spec-item">Custom Patches</span>
-            <span class="svc-spec-item">& More</span>
+            <span class="svc-spec-item">&amp; More</span>
           </div>
         </div>
       </div>
     </div>
     <div class="svc-grid">
       <div class="svc-card reveal">
-        <div class="svc-icon" aria-hidden="true">&#x1F9E5;</div>
-        <h3>Outerwear</h3>
-        <p>Jackets, hoodies, zip-ups, and fleece with your brand printed or embroidered. Built for comfort and made to be noticed on the job or out in the world.</p>
+        <div class="svc-card-img"><img src="outerwear.jpg" alt="Custom branded outerwear" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h3>Outerwear</h3>
+          <p>Jackets, hoodies, zip-ups, and fleece with your brand printed or embroidered. Built for comfort and made to be noticed on the job or out in the world.</p>
+          <div class="svc-card-footer">
+            <div class="svc-price">$18+ <span>starting price</span></div>
+            <a href="#home" class="svc-quote-btn">Get a Quote &#8594;</a>
+          </div>
+        </div>
       </div>
       <div class="svc-card reveal d1">
-        <div class="svc-icon" aria-hidden="true">&#x1F454;</div>
-        <h3>Business Wear</h3>
-        <p>Polos, button-downs, uniforms, and branded tees that keep your team looking sharp &#8212; perfect for work crews, retail, hospitality, and corporate staff.</p>
+        <div class="svc-card-img"><img src="business-wear.jpg" alt="Custom branded business wear" loading="lazy" style="object-position:center 10%;"/></div>
+        <div class="svc-card-body">
+          <h3>Business Wear</h3>
+          <p>Polos, button-downs, uniforms, and branded tees that keep your team looking sharp &#8212; perfect for work crews, retail, hospitality, and corporate staff.</p>
+          <div class="svc-card-footer">
+            <div class="svc-price">$12+ <span>starting price</span></div>
+            <a href="#home" class="svc-quote-btn">Get a Quote &#8594;</a>
+          </div>
+        </div>
       </div>
       <div class="svc-card reveal d2">
-        <div class="svc-icon" aria-hidden="true">&#x1F9E2;</div>
-        <h3>Hats &amp; Caps</h3>
-        <p>Structured caps, beanies, trucker hats, and snapbacks with your logo embroidered or printed. A walking billboard people actually want to wear.</p>
+        <div class="svc-card-img"><img src="hats-caps.jpg" alt="Custom branded hats and caps" loading="lazy" style="object-position:center 20%;"/></div>
+        <div class="svc-card-body">
+          <h3>Hats &amp; Caps</h3>
+          <p>Structured caps, beanies, trucker hats, and snapbacks with your logo embroidered or printed. A walking billboard people actually want to wear.</p>
+          <div class="svc-card-footer">
+            <div class="svc-price">$10+ <span>starting price</span></div>
+            <a href="#home" class="svc-quote-btn">Get a Quote &#8594;</a>
+          </div>
+        </div>
       </div>
       <div class="svc-card reveal d3">
-        <div class="svc-icon" aria-hidden="true">&#x1F392;</div>
-        <h3>Bags &amp; Accessories</h3>
-        <p>Aprons, backpacks, laptop bags, tote bags, and more &#8212; customizable with your design. Great for uniforms, events, giveaways, and branded merch.</p>
+        <div class="svc-card-img"><img src="bags-accessories.jpg" alt="Custom branded bags and accessories" loading="lazy"/></div>
+        <div class="svc-card-body">
+          <h3>Bags &amp; Accessories</h3>
+          <p>Aprons, backpacks, laptop bags, tote bags, and more &#8212; customizable with your design. Great for uniforms, events, giveaways, and branded merch.</p>
+          <div class="svc-card-footer">
+            <div class="svc-price">$8+ <span>starting price</span></div>
+            <a href="#home" class="svc-quote-btn">Get a Quote &#8594;</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- QUOTE -->
+  <!-- ── BRANDS ── -->
+  <section id="brands" aria-label="Brands we carry">
+    <div class="brands-wrap">
+      <div class="section-label-row reveal">
+        <div class="eyebrow">Brands We Carry</div>
+        <h2 class="section-h dark reveal d1">50+ <em>Top Brands</em></h2>
+        <p class="section-desc reveal d1">We source from the best manufacturers in the industry so your team gets quality, fit, and style they'll actually want to wear.</p>
+      </div>
+      <div class="brand-pill-grid reveal d2">
+        <span class="brand-pill">Nike</span>
+        <span class="brand-pill">Carhartt</span>
+        <span class="brand-pill">The North Face</span>
+        <span class="brand-pill">Columbia</span>
+        <span class="brand-pill">Champion</span>
+        <span class="brand-pill">Bella+Canvas</span>
+        <span class="brand-pill">Hanes</span>
+        <span class="brand-pill">Dickies</span>
+        <span class="brand-pill">New Era</span>
+        <span class="brand-pill">Puma</span>
+        <span class="brand-pill">Brooks Brothers</span>
+        <span class="brand-pill">Eddie Bauer</span>
+        <span class="brand-pill">Cutter &amp; Buck</span>
+        <span class="brand-pill">Comfort Colors</span>
+        <span class="brand-pill">American Apparel</span>
+        <span class="brand-pill">Next Level</span>
+        <span class="brand-pill">Port Authority</span>
+        <span class="brand-pill">Gildan</span>
+        <span class="brand-pill">Fruit of the Loom</span>
+        <span class="brand-pill">Samsonite</span>
+        <span class="brand-pill">Caterpillar (CAT)</span>
+        <span class="brand-pill">TravisMathew</span>
+        <span class="brand-pill">Spyder</span>
+        <span class="brand-pill">Yupoong / Flexfit</span>
+        <span class="brand-pill">OGIO</span>
+        <span class="brand-pill">Timbuk2</span>
+        <span class="brand-pill">Sport-Tek</span>
+        <span class="brand-pill" style="border-color:var(--gold);color:var(--gold);font-style:italic;">&amp; many more</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLIENTS ── -->
+  <section id="clients" aria-label="Companies we have worked with">
+    <div class="clients-wrap">
+      <div class="section-label-row reveal">
+        <div class="eyebrow" style="color:var(--gold);">Trusted By</div>
+        <h2 class="section-h light reveal d1">Businesses &amp; Organizations<br/>That <em>Trust Us</em></h2>
+        <p class="section-desc reveal d1" style="color:var(--muted);">From local schools and restaurants to government agencies and national companies &#8212; we&#8217;ve had the privilege of outfitting them all.</p>
+      </div>
+      <div class="client-pill-grid reveal d1">
+        <span class="client-pill">United States Navy</span>
+        <span class="client-pill">GEICO</span>
+        <span class="client-pill">Sysco</span>
+        <span class="client-pill">Va. Beach Sheriff&#8217;s Office</span>
+        <span class="client-pill">Atlantic Bay</span>
+        <span class="client-pill">Hunt Club Farm</span>
+        <span class="client-pill">ADS Inc.</span>
+        <span class="client-pill">BABCO Roofing</span>
+        <span class="client-pill">Bayside High School</span>
+        <span class="client-pill">Maury High School</span>
+        <span class="client-pill">Norview High School</span>
+        <span class="client-pill">Partee Golf</span>
+        <span class="client-pill">Tortorice&#8217;s Foods</span>
+        <span class="client-pill">Bishop &amp; Dice Defense</span>
+        <span class="client-pill">Martinez HVAC</span>
+        <span class="client-pill">Broken T Medical</span>
+        <span class="client-pill">Pho 79 Restaurant</span>
+        <span class="client-pill">Katy&#8217;s Yachts</span>
+        <span class="client-pill">ADB Dance Studio</span>
+        <span class="client-pill" style="border-color:var(--gold);color:var(--gold-light);font-style:italic;">&amp; many more</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT — moved here so DOM order matches nav order ── -->
+  <section id="about" aria-label="About us">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="eyebrow reveal">Our Story</div>
+        <h2 class="section-h dark reveal d1">A local shop<br/>that <em>cares about</em><br/>every print.</h2>
+        <p class="reveal d1">We are a local custom apparel shop with over 20 years of experience delivering vibrant, lasting results for businesses, teams, sports organizations, and events. From a single custom tee to a full company uniform run, we bring your designs to life &#8212; fast, and exactly right.</p>
+        <p class="reveal d2">We&#8217;ve helped hundreds of businesses and delivered 1,000+ items in 2026 alone. Whether you have a finished logo or just an idea, we&#8217;ll work with you every step of the way &#8212; because your brand deserves nothing less. Need it fast? Ask about our express turnaround options.</p>
+        <div class="about-feats reveal d2">
+          <div class="feat"><div class="feat-dot"></div><span>20 Years Experience</span></div>
+          <div class="feat"><div class="feat-dot"></div><span>Expert Craft</span></div>
+          <div class="feat"><div class="feat-dot"></div><span>Free Design Help</span></div>
+          <div class="feat"><div class="feat-dot"></div><span>Express Options</span></div>
+          <div class="feat"><div class="feat-dot"></div><span>Vibrant Results</span></div>
+        </div>
+      </div>
+      <!-- Gallery — placeholders styled to prompt photo upload -->
+      <div class="work-gallery reveal d1" id="workGallery" aria-label="Our work">
+        <div class="gallery-item">
+          <div class="gph tall">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add Photo</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gph wide">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add Photo</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gph sq">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add Photo</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gph wide">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add Photo</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gph tall">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add Photo</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gph sq">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add Photo</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gph wide">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add Photo</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gph tall">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Add Photo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── QUOTE ── -->
   <section id="quote" aria-label="Get a free quote">
     <div class="quote-wrap">
       <div class="q-left">
@@ -392,11 +626,11 @@
         <p class="reveal d1">Reach out directly for the fastest reply, or fill out the form and we&#8217;ll respond within 24 hours. Express turnaround options available &#8212; just ask.</p>
         <div class="q-cta reveal d1">
           <a href="tel:+17575810004" class="btn-gold">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.13a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             (757) 581-0004
           </a>
           <a id="emailBtn2" href="javascript:void(0)" class="btn-gold">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
             Email Us
           </a>
         </div>
@@ -408,7 +642,9 @@
         </ul>
       </div>
       <div>
-        <form class="qform reveal" id="quoteForm" method="POST" novalidate>
+        <form class="qform reveal" id="quoteForm" method="POST" name="quote" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" novalidate>
+          <input type="hidden" name="form-name" value="quote"/>
+          <p style="display:none;"><label>Don&#8217;t fill this out: <input name="bot-field"/></label></p>
           <div class="form-row">
             <div>
               <label class="flabel" for="fn">Your Name *</label>
@@ -451,6 +687,33 @@
             <label class="flabel" for="fx">Design Details</label>
             <textarea id="fx" name="details" placeholder="Describe your design, colors, garment type, or any other details&#8230;"></textarea>
           </div>
+          <div>
+            <label class="flabel" for="fbudget">Approximate Budget</label>
+            <div class="sel-wrap">
+              <select id="fbudget" name="budget">
+                <option value="" disabled selected>Select a range&#8230;</option>
+                <option>Under $200</option>
+                <option>$200 &#8211; $500</option>
+                <option>$500 &#8211; $1,000</option>
+                <option>$1,000 &#8211; $2,500</option>
+                <option>$2,500+</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="flabel" for="ffile">Upload Your Logo or Design <span style="font-size:.65rem;color:var(--muted);text-transform:none;letter-spacing:0;">(optional &#8212; JPG, PNG, PDF, AI, EPS)</span></label>
+            <label class="file-upload-label" for="ffile" id="fileLabel">
+              <div class="file-upload-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <div class="file-upload-text">
+                <span class="file-upload-main" id="fileMain">Click to upload or drag &amp; drop</span>
+                <span class="file-upload-sub">Max 10MB &#8212; JPG, PNG, PDF, AI, EPS</span>
+              </div>
+            </label>
+            <input type="file" id="ffile" name="design_file" accept=".jpg,.jpeg,.png,.pdf,.ai,.eps,.svg" style="display:none;"/>
+          </div>
           <button type="submit" class="btn-submit">Send My Quote Request &#8594;</button>
         </form>
         <div class="form-ok" id="formOk" role="alert">
@@ -461,37 +724,7 @@
     </div>
   </section>
 
-  <!-- ABOUT + GALLERY -->
-  <section id="about" aria-label="About us">
-    <div class="about-inner">
-      <div class="about-text">
-        <div class="eyebrow reveal">Our Story</div>
-        <h2 class="section-h dark reveal d1">A local shop<br/>that <em>cares about</em><br/>every print.</h2>
-        <p class="reveal d1">We are a local custom apparel shop with over 20 years of experience delivering vibrant, lasting results for businesses, teams, sports organizations, and events. From a single custom tee to a full company uniform run, we bring your designs to life &#8212; fast, and exactly right.</p>
-        <p class="reveal d2">We&#8217;ve helped hundreds of businesses and delivered 1,000+ items in 2026 alone. Whether you have a finished logo or just an idea, we&#8217;ll work with you every step of the way &#8212; because your brand deserves nothing less. Need it fast? Ask about our express turnaround options.</p>
-        <div class="about-feats reveal d2">
-          <div class="feat"><div class="feat-dot"></div><span>20 Years Experience</span></div>
-          <div class="feat"><div class="feat-dot"></div><span>Expert Craft</span></div>
-          <div class="feat"><div class="feat-dot"></div><span>Free Design Help</span></div>
-          <div class="feat"><div class="feat-dot"></div><span>Express Options</span></div>
-          <div class="feat"><div class="feat-dot"></div><span>Vibrant Results</span></div>
-        </div>
-      </div>
-
-      <div class="work-gallery reveal d1" id="workGallery" aria-label="Our work">
-        <div class="gallery-item"><div class="gph tall">Photo 1</div></div>
-        <div class="gallery-item"><div class="gph wide">Photo 2</div></div>
-        <div class="gallery-item"><div class="gph sq">Photo 3</div></div>
-        <div class="gallery-item"><div class="gph wide">Photo 4</div></div>
-        <div class="gallery-item"><div class="gph tall">Photo 5</div></div>
-        <div class="gallery-item"><div class="gph sq">Photo 6</div></div>
-        <div class="gallery-item"><div class="gph wide">Photo 7</div></div>
-        <div class="gallery-item"><div class="gph tall">Photo 8</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIGHTBOX -->
+  <!-- ── LIGHTBOX ── -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
     <button class="lb-close" id="lbClose" aria-label="Close">&#x2715;</button>
     <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#x2039;</button>
@@ -499,6 +732,7 @@
     <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#x203A;</button>
   </div>
 
+  <!-- ── FOOTER ── -->
   <footer>
     <div class="foot-inner">
       <div class="foot-brand">
@@ -511,6 +745,8 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Products</a></li>
+          <li><a href="#brands">Brands</a></li>
+          <li><a href="#clients">Clients</a></li>
           <li><a href="#quote">Get a Quote</a></li>
         </ul>
       </div>
@@ -524,94 +760,121 @@
     </div>
     <div class="foot-bottom">
       <p>&#169; 2026 Quality Silkscreens. All Rights Reserved.</p>
-      <a id="footEmail2" href="javascript:void(0)"><span class="__cf_email__" data-cfemail="ee9f9b819a8bae9f9b8f82879a979d8782859d8d9c8b8b809dc08d8183">[email&#160;protected]</span></a>
+      <a id="footEmail2" href="javascript:void(0)"><span class="__cf_email__" data-cfemail="5524203a213015242034393c212c263c393e26362730303b267b363a38">[email&#160;protected]</span></a>
     </div>
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Money easter egg — animates every 30 seconds
+    // Money egg animation
     var egg = document.getElementById('moneyEgg');
-    function triggerEgg(){
-      egg.style.animation='none';
-      void egg.offsetWidth;
-      egg.style.animation='moneyPulse 1.4s ease-in-out 1';
-    }
-    setTimeout(function(){ triggerEgg(); setInterval(triggerEgg, 15000); }, 4000);
+    function triggerEgg(){egg.style.animation='none';void egg.offsetWidth;egg.style.animation='moneyPulse 1.4s ease-in-out 1';}
+    // Trigger on hover instead of interval
+    egg.addEventListener('mouseenter', triggerEgg);
+    setTimeout(triggerEgg, 3000); // once on load
 
-    // Smooth scroll for all anchor links — prevents any new window/tab behaviour
+    // Smooth scroll for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function(link){
-      link.addEventListener('click', function(e){
-        var href = this.getAttribute('href');
-        if(href === '#') return;
-        var target = document.querySelector(href);
-        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+      link.addEventListener('click',function(e){
+        var href=this.getAttribute('href');
+        if(href==='#'||href==='javascript:void(0)')return;
+        var target=document.querySelector(href);
+        if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
       });
     });
 
-    var em = 'quote' + '@' + 'qualitysilkscreens.com';
-    var sub = encodeURIComponent('Free Quote Request - Quality Silkscreens');
-    var ml = 'mailto:' + em + '?subject=' + sub;
+    // Email links
+    var em='quote'+'@'+'qualitysilkscreens.com';
+    var sub=encodeURIComponent('Free Quote Request - Quality Silkscreens');
+    var ml='mailto:'+em+'?subject='+sub;
     ['emailBtn','emailBtn2'].forEach(function(id){
-      var el = document.getElementById(id);
-      if(el){ el.href = ml; }
+      var el=document.getElementById(id);
+      if(el){el.href=ml;}
     });
     ['footEmail','footEmail2'].forEach(function(id){
-      var el = document.getElementById(id);
-      if(el){ el.href = 'mailto:' + em; el.textContent = em; }
-    });
-    var frm = document.getElementById('quoteForm');
-    if(frm){ frm.action = 'https://formsubmit.co/' + em; }
-
-    var nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 50); }, {passive:true});
-
-    var burger = document.getElementById('hamburger');
-    var mmenu  = document.getElementById('mobileMenu');
-    function openMenu(){  mmenu.classList.add('open');    burger.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
-    function closeMenu(){ mmenu.classList.remove('open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-    burger.addEventListener('click', function(){ mmenu.classList.contains('open') ? closeMenu() : openMenu(); });
-
-    var ro = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
-    }, {threshold:0, rootMargin:'0px 0px -20px 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
-
-    var lightbox = document.getElementById('lightbox');
-    var lbImg = document.getElementById('lbImg');
-    var imgs = [], lbIdx = 0;
-    function initGallery(){
-      imgs = Array.from(document.querySelectorAll('#workGallery .gallery-item img'));
-      imgs.forEach(function(img, i){ img.closest('.gallery-item').addEventListener('click', function(){ openLb(i); }); });
-    }
-    function openLb(i){  lbIdx=i; lbImg.src=imgs[i].src; lbImg.alt=imgs[i].alt; lightbox.classList.add('open'); document.body.style.overflow='hidden'; }
-    function closeLb(){  lightbox.classList.remove('open'); document.body.style.overflow=''; }
-    function stepLb(d){  lbIdx=(lbIdx+d+imgs.length)%imgs.length; lbImg.src=imgs[lbIdx].src; lbImg.alt=imgs[lbIdx].alt; }
-    initGallery();
-    document.getElementById('lbClose').addEventListener('click', closeLb);
-    document.getElementById('lbPrev').addEventListener('click', function(){ stepLb(-1); });
-    document.getElementById('lbNext').addEventListener('click', function(){ stepLb(1); });
-    lightbox.addEventListener('click', function(e){ if(e.target===lightbox) closeLb(); });
-    document.addEventListener('keydown', function(e){
-      if(lightbox.classList.contains('open')){
-        if(e.key==='ArrowLeft') stepLb(-1);
-        else if(e.key==='ArrowRight') stepLb(1);
-        else if(e.key==='Escape') closeLb();
-      } else if(e.key==='Escape') closeMenu();
+      var el=document.getElementById(id);
+      if(el){el.href='mailto:'+em;}
     });
 
-    var form   = document.getElementById('quoteForm');
-    var formOk = document.getElementById('formOk');
-    form.addEventListener('submit', function(e){
-      var ok = true;
-      form.querySelectorAll('[required]').forEach(function(f){
-        f.style.borderColor = '';
-        if(!f.value.trim()){ f.style.borderColor = '#b33'; ok = false; }
+    // Scroll nav shadow
+    var nav=document.getElementById('mainNav');
+    window.addEventListener('scroll',function(){
+      nav.classList.toggle('scrolled',window.scrollY>50);
+    },{passive:true});
+
+    // Mobile menu
+    var burger=document.getElementById('hamburger');
+    var mmenu=document.getElementById('mobileMenu');
+    function openMenu(){mmenu.classList.add('open');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+    function closeMenu(){mmenu.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+    burger.addEventListener('click',function(){
+      mmenu.classList.contains('open')?closeMenu():openMenu();
+    });
+
+    // Scroll reveal
+    var ro=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.remove('hidden');e.target.classList.add('in');ro.unobserve(e.target);}
       });
-      if(!ok){ e.preventDefault(); var first = form.querySelector('[style*="b33"]'); if(first) first.focus(); }
-    });
-    if(new URLSearchParams(location.search).get('sent')==='1'){
-      form.style.display='none'; formOk.style.display='block';
+    },{threshold:0,rootMargin:'0px 0px -20px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('hidden');ro.observe(el);});
+
+    // Lightbox — only activates if real images are present
+    var lightbox=document.getElementById('lightbox');
+    var lbImg=document.getElementById('lbImg');
+    var imgs=[],lbIdx=0;
+    function initGallery(){
+      imgs=Array.from(document.querySelectorAll('#workGallery .gallery-item img'));
+      imgs.forEach(function(img,i){
+        img.closest('.gallery-item').addEventListener('click',function(){openLb(i);});
+      });
     }
-  </script>
-</body>
-</html>
+    function openLb(i){lbIdx=i;lbImg.src=imgs[i].src;lbImg.alt=imgs[i].alt;lightbox.classList.add('open');document.body.style.overflow='hidden';}
+    function closeLb(){lightbox.classList.remove('open');document.body.style.overflow='';}
+    function stepLb(d){lbIdx=(lbIdx+d+imgs.length)%imgs.length;lbImg.src=imgs[lbIdx].src;lbImg.alt=imgs[lbIdx].alt;}
+    initGallery();
+    document.getElementById('lbClose').addEventListener('click',closeLb);
+    document.getElementById('lbPrev').addEventListener('click',function(){stepLb(-1);});
+    document.getElementById('lbNext').addEventListener('click',function(){stepLb(1);});
+    lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLb();});
+    document.addEventListener('keydown',function(e){
+      if(lightbox.classList.contains('open')){
+        if(e.key==='ArrowLeft')stepLb(-1);
+        else if(e.key==='ArrowRight')stepLb(1);
+        else if(e.key==='Escape')closeLb();
+      } else if(e.key==='Escape')closeMenu();
+    });
+
+    // Form validation
+    var form=document.getElementById('quoteForm');
+    var formOk=document.getElementById('formOk');
+    form.addEventListener('submit',function(e){
+      var ok=true;
+      form.querySelectorAll('[required]').forEach(function(f){
+        f.style.borderColor='';
+        if(!f.value.trim()){f.style.borderColor='#c0392b';ok=false;}
+      });
+      if(!ok){
+        e.preventDefault();
+        var first=form.querySelector('[style*="c0392b"]');
+        if(first)first.focus();
+      }
+    });
+
+    // File upload label
+    var ffile=document.getElementById('ffile');
+    var fileLabel=document.getElementById('fileLabel');
+    var fileMain=document.getElementById('fileMain');
+    if(ffile){
+      ffile.addEventListener('change',function(){
+        if(this.files&&this.files[0]){
+          fileMain.textContent=this.files[0].name;
+          fileLabel.classList.add('has-file');
+        }
+      });
+      fileLabel.addEventListener('dragover',function(e){e.preventDefault();this.style.borderColor='var(--gold)';});
+      fileLabel.addEventListener('dragleave',function(){this.style.borderColor='';});
+      fileLabel.addEventListener('drop',function(e){
+        e.preventDefault();this.style.borderColor='';
+        if(e.dataTransfer.files[0]){
+          ffile.files=e.dataTransfer.files;
+          fileMain.textContent=e.dataT
